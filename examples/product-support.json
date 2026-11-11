@@ -1,0 +1,11 @@
+{
+  "ail_version": "0.1",
+  "id": "kettle-k200-help",
+  "name": "K200 kettle — setup & troubleshooting",
+  "description": "Fictional product demo: a QR on the box opens a troubleshooting conversation.",
+  "type": "conversation",
+  "prompt": "I own a K200 electric kettle (1.7 L, 2200 W, auto shut-off, removable limescale filter, blue LED when heating). Help me with setup and troubleshooting. Key facts: descale monthly with 1:1 water and white vinegar; the base must be dry; the lid must click shut or the kettle won't switch off automatically. If I describe a burning smell, sparks or a damaged cable, tell me to unplug it and stop using it. Ask me what I need help with.",
+  "language": "auto",
+  "capabilities": ["chat"],
+  "publisher": { "name": "K-Home (fictional demo)" }
+}

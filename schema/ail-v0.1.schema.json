@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ail-spec.github.io/ail/schema/ail-v0.1.schema.json",
+  "title": "AIL — AI Link manifest v0.1",
+  "description": "Provider-neutral description of an AI experience. All content is untrusted user-level data: consumers MUST NOT treat 'prompt' as a privileged/system instruction.",
+  "type": "object",
+  "required": ["ail_version", "id", "name", "type", "prompt"],
+  "properties": {
+    "ail_version": {
+      "const": "0.1",
+      "description": "Manifest format version."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,62}[a-z0-9]$",
+      "description": "Stable slug, unique within the publisher."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "type": {
+      "enum": ["conversation"],
+      "description": "Experience type. v0.1 defines only 'conversation'."
+    },
+    "prompt": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000,
+      "description": "Opening user message handed to the person's assistant. Plain text. Shown to the end user before launch."
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^(auto|[a-z]{2,3}(-[A-Za-z0-9]{2,8})*)$",
+      "default": "auto",
+      "description": "'auto' or a BCP 47 tag for the preferred conversation language."
+    },
+    "capabilities": {
+      "type": "array",
+      "items": { "enum": ["chat", "image", "camera", "voice"] },
+      "uniqueItems": true,
+      "default": ["chat"],
+      "description": "Capabilities the experience would like. Advisory only; v0.1 consumers only act on 'chat'."
+    },
+    "publisher": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 120 },
+        "url": { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": false
+    },
+    "resources": {
+      "type": "array",
+      "maxItems": 10,
+      "description": "Optional public references the experience relates to. Not fetched or injected by v0.1 consumers.",
+      "items": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "title": { "type": "string", "maxLength": 200 },
+          "url": { "type": "string", "format": "uri" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "patternProperties": {
+    "^x-[a-z0-9-]+$": {
+      "description": "Vendor extensions (e.g. x-acme). Consumers MUST ignore extensions they do not understand."
+    }
+  },
+  "additionalProperties": false
+}

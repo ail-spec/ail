@@ -1,0 +1,11 @@
+{
+  "ail_version": "0.1",
+  "id": "casa-lola-menu",
+  "name": "Casa Lola — ask about the menu",
+  "description": "Fictional restaurant demo: the menu travels inside the prompt so no API or document retrieval is needed.",
+  "type": "conversation",
+  "prompt": "I'm at Casa Lola, a tapas bar, and I'd like help choosing what to order. Here is the menu:\n\n- Patatas bravas — 6 €\n- Croquetas de jamón (6) — 8 €\n- Pulpo a la gallega — 16 €\n- Tortilla de patatas — 7 €\n- Pimientos de Padrón — 6 € (vegan)\n- Gambas al ajillo — 14 €\n- Crema catalana — 5 €\n\nAsk me about dietary restrictions, appetite and budget, then recommend a combination for my table. Only recommend dishes from this menu.",
+  "language": "auto",
+  "capabilities": ["chat"],
+  "publisher": { "name": "Casa Lola (fictional demo)" }
+}

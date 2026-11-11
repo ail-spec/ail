@@ -1,0 +1,19 @@
+name: Spec change
+description: Propose a change to the AIL format
+labels: [spec]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+  - type: textarea
+    id: safety
+    attributes:
+      label: Effect on the safety rules
+      description: Does it change what the person sees before sending, or how untrusted content is handled?

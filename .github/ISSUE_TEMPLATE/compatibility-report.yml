@@ -1,0 +1,51 @@
+name: Compatibility report
+description: Tell us what happened when you opened an AI link on your device
+labels: [compatibility]
+body:
+  - type: dropdown
+    id: assistant
+    attributes:
+      label: Assistant
+      options: [ChatGPT, Claude, Gemini, Other]
+    validations:
+      required: true
+  - type: input
+    id: variant
+    attributes:
+      label: Launch variant or URL pattern
+      description: For example chatgpt-web-q, or the URL with the prompt removed
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device, OS, browser and app version
+      placeholder: iPhone 15, iOS 26.1, Safari, ChatGPT app 1.2026.300
+    validations:
+      required: true
+  - type: dropdown
+    id: opened
+    attributes:
+      label: What opened?
+      options: [The installed app, A browser page, Nothing or an error]
+    validations:
+      required: true
+  - type: dropdown
+    id: prompt
+    attributes:
+      label: Was the message in the chat box?
+      options: ["Yes, exact", "Partly (cut off or broken characters)", "No"]
+    validations:
+      required: true
+  - type: dropdown
+    id: sent
+    attributes:
+      label: Was it sent without you tapping send?
+      options: ["No", "Yes"]
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Details
+      description: Signed in or out, app installed or not, how you opened the link (tap, camera scan, messaging app), anything odd

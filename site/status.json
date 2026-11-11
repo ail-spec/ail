@@ -1,0 +1,219 @@
+{
+  "generatedFrom": "lib/providers/*.ts",
+  "evidenceLevels": {
+    "documented": "The provider's own documentation describes it.",
+    "observed": "Seen working in device tests or by several third parties. Undocumented: it can break at any time.",
+    "conflicting": "Sources disagree. Needs a device test.",
+    "unverified": "Plausible, but no reliable report either way.",
+    "unsupported": "Known not to work, or no mechanism exists."
+  },
+  "providers": [
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "homeUrl": "https://chatgpt.com/",
+      "lastVerified": "2026-11-11",
+      "verificationMethod": "device-tested",
+      "defaultStrategy": "url-prefill",
+      "nativeAppLaunch": {
+        "ios": "observed",
+        "android": "observed",
+        "desktop": "unverified"
+      },
+      "promptPrefill": {
+        "desktop": "observed",
+        "ios": "observed",
+        "android": "observed"
+      },
+      "autoSubmit": "observed",
+      "autoSubmitNote": "Signed in: fills the composer only. Signed out: sent immediately.",
+      "requiresLogin": "No for the web: signed out, the message is sent immediately (observed 2026-11-11). The app requires an account.",
+      "fallback": "Copy prompt, then open chatgpt.com.",
+      "safeUrlLength": 2000,
+      "variants": [
+        {
+          "id": "chatgpt-web-q",
+          "url": "https://chatgpt.com/?q={prompt}",
+          "strategy": "url-prefill",
+          "experimental": false,
+          "evidence": "observed",
+          "note": "Undocumented ?q= parameter. Device-tested: fills the composer when signed in; sends immediately when signed out."
+        },
+        {
+          "id": "chatgpt-web-q-temporary",
+          "url": "https://chatgpt.com/?q={prompt}&temporary-chat=true",
+          "strategy": "url-prefill",
+          "experimental": true,
+          "evidence": "observed",
+          "note": "Community-reported flag; keeps the chat out of history."
+        },
+        {
+          "id": "chatgpt-open",
+          "url": "https://chatgpt.com/",
+          "strategy": "copy-and-open",
+          "experimental": false,
+          "evidence": "documented",
+          "note": "Opens the provider's normal entry point. No prompt is transferred; the person pastes it."
+        }
+      ],
+      "docs": [
+        {
+          "title": "Tenable TRA-2025-22 — ChatGPT prompt injection via ?q=",
+          "url": "https://www.tenable.com/security/research/tra-2025-22",
+          "kind": "security-advisory",
+          "note": "Confirms q= is read by the web UI and (at the time) auto-submitted."
+        },
+        {
+          "title": "OpenAI community — Query parameters in ChatGPT",
+          "url": "https://community.openai.com/t/query-parameters-in-chatgpt/1027747",
+          "kind": "third-party",
+          "note": "Reports ?q=, &hints=search, &temporary-chat=true."
+        },
+        {
+          "title": "OpenAI community — Deep linking for Custom GPTs (feature request)",
+          "url": "https://community.openai.com/t/deep-linking-for-custom-gpts-with-url-parameters-launch-context/1370871",
+          "kind": "third-party",
+          "note": "Shows there is no official, stable deep-link mechanism."
+        }
+      ]
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "homeUrl": "https://claude.ai/new",
+      "lastVerified": "2026-11-11",
+      "verificationMethod": "device-tested",
+      "defaultStrategy": "url-prefill",
+      "nativeAppLaunch": {
+        "ios": "observed",
+        "android": "observed",
+        "desktop": "unverified"
+      },
+      "promptPrefill": {
+        "desktop": "observed",
+        "ios": "observed",
+        "android": "observed"
+      },
+      "autoSubmit": "unsupported",
+      "autoSubmitNote": "Never sent by itself in device tests, signed in or out.",
+      "requiresLogin": "Yes. Signed out, desktop Chrome kept the message through sign-in; Android Chrome lost it at the login page (2026-11-11). The clipboard copy covers that case.",
+      "fallback": "Copy prompt, then open claude.ai/new.",
+      "safeUrlLength": 2000,
+      "variants": [
+        {
+          "id": "claude-web-q",
+          "url": "https://claude.ai/new?q={prompt}",
+          "strategy": "url-prefill",
+          "experimental": false,
+          "evidence": "observed",
+          "note": "Undocumented ?q= parameter. Device-tested: fills the composer, never sends. A direct camera scan on iOS lost the message."
+        },
+        {
+          "id": "claude-native-scheme",
+          "url": "claude://claude.ai/new?q={prompt}",
+          "strategy": "url-prefill",
+          "experimental": true,
+          "evidence": "observed",
+          "note": "Custom scheme. Opened the app with the message on iOS and Android. Fails if the app is not installed, so lab only."
+        },
+        {
+          "id": "claude-open",
+          "url": "https://claude.ai/new",
+          "strategy": "copy-and-open",
+          "experimental": false,
+          "evidence": "documented",
+          "note": "Opens the provider's normal entry point. No prompt is transferred; the person pastes it."
+        }
+      ],
+      "docs": [
+        {
+          "title": "Oasis Security — Claudy Day (claude.ai/new?q= prompt injection)",
+          "url": "https://www.oasis.security/blog/claude-ai-prompt-injection-data-exfiltration-vulnerability",
+          "kind": "security-advisory",
+          "note": "Describes /new?q= as pre-filling the chat box; hidden-HTML injection was fixed."
+        },
+        {
+          "title": "starlight-llm-actions — provider strategies",
+          "url": "https://holdenhewett.github.io/starlight-llm-actions/getting-started/concepts/",
+          "kind": "third-party",
+          "note": "Claims ?q= broke in Oct 2025 (unsourced). Uses clipboard-open for Claude."
+        },
+        {
+          "title": "Drafts directory — claude:// URL scheme action",
+          "url": "https://directory.getdrafts.com/a/25n",
+          "kind": "third-party",
+          "note": "Reports claude://claude.ai/new?q= opening the desktop and mobile apps."
+        }
+      ]
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "homeUrl": "https://gemini.google.com/app",
+      "lastVerified": "2026-11-11",
+      "verificationMethod": "device-tested",
+      "defaultStrategy": "copy-and-open",
+      "nativeAppLaunch": {
+        "ios": "observed",
+        "android": "unverified",
+        "desktop": "unsupported"
+      },
+      "promptPrefill": {
+        "desktop": "conflicting",
+        "ios": "conflicting",
+        "android": "conflicting"
+      },
+      "autoSubmit": "unverified",
+      "autoSubmitNote": "No prefill by default, so nothing to send.",
+      "requiresLogin": "Yes — Google account required.",
+      "fallback": "Copy prompt, then open gemini.google.com/app. This is the default for Gemini.",
+      "safeUrlLength": 2000,
+      "variants": [
+        {
+          "id": "gemini-open",
+          "url": "https://gemini.google.com/app",
+          "strategy": "copy-and-open",
+          "experimental": false,
+          "evidence": "documented",
+          "note": "Opens the provider's normal entry point. No prompt is transferred; the person pastes it."
+        },
+        {
+          "id": "gemini-web-q",
+          "url": "https://gemini.google.com/app?q={prompt}",
+          "strategy": "url-prefill",
+          "experimental": true,
+          "evidence": "conflicting",
+          "note": "Claimed by one generator site; most reports say it needs an extension."
+        },
+        {
+          "id": "gemini-guided-learning-query",
+          "url": "https://gemini.google.com/guided-learning?query={prompt}",
+          "strategy": "url-prefill",
+          "experimental": true,
+          "evidence": "unverified",
+          "note": "Reported by an education blog (Dec 2025). Changes Gemini's mode."
+        }
+      ],
+      "docs": [
+        {
+          "title": "Google Help — Use learning tools in Gemini Apps",
+          "url": "https://support.google.com/gemini/answer/16448384",
+          "kind": "official",
+          "note": "Official docs describe typing the prompt; no URL prefill is documented."
+        },
+        {
+          "title": "gemini-url-prompt (Chrome extension adding ?prompt= / ?q=)",
+          "url": "https://github.com/elliot79313/gemini-url-prompt",
+          "kind": "third-party",
+          "note": "Exists because Gemini has no built-in URL prefill."
+        },
+        {
+          "title": "u2l.ai — Gemini prompt link generator",
+          "url": "https://u2l.ai/tools/gemini-prompt-link-generator",
+          "kind": "third-party",
+          "note": "Claims ?q= works natively. Contradicts the above; unverified."
+        }
+      ]
+    }
+  ]
+}

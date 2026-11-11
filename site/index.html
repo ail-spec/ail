@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIL — AI Link compatibility</title>
+<meta name="description" content="What works today when a link opens ChatGPT, Claude or Gemini with a prompt.">
+<style>
+:root {
+  --bg: #f6f7f6; --surface: #fff; --ink: #18211e; --muted: #5a6762; --line: #d8dfdc; --accent: #0f6b5c;
+  --documented: #1d7a3e; --documented-bg: #dff3e6;
+  --observed: #2b6f1f; --observed-bg: #e6f4d9;
+  --conflicting: #8a5a00; --conflicting-bg: #fbefd2;
+  --unverified: #5a6762; --unverified-bg: #e9edeb;
+  --unsupported: #a8322a; --unsupported-bg: #f9e2df;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111614; --surface: #1a211e; --ink: #e5ebe8; --muted: #9aa8a2; --line: #2e3833; --accent: #4fc2a9;
+    --documented: #7be0a0; --documented-bg: #173224;
+    --observed: #a9dc8c; --observed-bg: #22331a;
+    --conflicting: #e8b85a; --conflicting-bg: #3a2e15;
+    --unverified: #9aa8a2; --unverified-bg: #262e2b;
+    --unsupported: #f08a80; --unsupported-bg: #3d1f1c;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 900px; margin: 0 auto; padding: 32px 16px 64px; display: flex; flex-direction: column; gap: 28px; }
+h1 { font-size: 28px; line-height: 1.2; margin: 0; }
+h2 { font-size: 18px; margin: 0 0 8px; }
+h3 { font-size: 15px; margin: 0; }
+p { margin: 0; }
+a { color: var(--accent); }
+.lede { color: var(--muted); max-width: 65ch; }
+.warn { background: var(--conflicting-bg); color: var(--conflicting); border-radius: 8px; padding: 10px 14px; }
+.scroll { overflow-x: auto; }
+table { border-collapse: separate; border-spacing: 4px; width: 100%; min-width: 520px; }
+th { text-align: left; font-size: 13px; color: var(--muted); font-weight: 600; padding: 4px 8px; }
+td { padding: 0; }
+.cell { display: block; border-radius: 6px; padding: 10px 8px; text-align: center; font-size: 13px; font-weight: 600; }
+.cell small { display: block; font-weight: 400; font-size: 12px; }
+.documented { background: var(--documented-bg); color: var(--documented); }
+.observed { background: var(--observed-bg); color: var(--observed); }
+.conflicting { background: var(--conflicting-bg); color: var(--conflicting); }
+.unverified { background: var(--unverified-bg); color: var(--unverified); }
+.unsupported { background: var(--unsupported-bg); color: var(--unsupported); }
+.rowhead { font-weight: 600; padding: 10px 8px; white-space: nowrap; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; }
+.legend .cell { display: inline-block; padding: 4px 10px; }
+.legend-list { display: grid; grid-template-columns: max-content 1fr; gap: 6px 12px; margin: 0; font-size: 14px; }
+.legend-list dd { margin: 0; color: var(--muted); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.card p, .card li { font-size: 14px; color: var(--muted); }
+.card ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+code { font: 12px ui-monospace, "SF Mono", Menlo, monospace; word-break: break-all; }
+.tag { font-size: 11px; border-radius: 999px; padding: 1px 8px; font-weight: 600; white-space: nowrap; }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <header style="display:flex;flex-direction:column;gap:8px">
+    <h1>Can I open an AI assistant with a link?</h1>
+    <p class="lede">What happens today when a link or QR code tries to open ChatGPT, Claude or Gemini with a prompt. Maintained by the <a href="https://github.com/ail-spec/ail">AIL (AI Link)</a> project and generated from its provider adapters.</p>
+    <p class="warn">No provider documents a prefill URL. Everything marked “observed” is undocumented behavior and can change without notice.</p>
+  </header>
+
+  <section>
+    <h2>Evidence levels</h2>
+    <dl class="legend-list" id="legend"></dl>
+  </section>
+
+  <section>
+    <h2>Native app opens from a link</h2>
+    <div class="scroll"><table id="t-native"></table></div>
+  </section>
+
+  <section>
+    <h2>Prompt arrives in the chat box</h2>
+    <div class="scroll"><table id="t-prefill"></table></div>
+  </section>
+
+  <section>
+    <h2>Sent without the person tapping send</h2>
+    <div class="scroll"><table id="t-auto"></table></div>
+  </section>
+
+  <section>
+    <h2>Per assistant</h2>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <footer>
+    <p>Data: <a href="status.json">status.json</a> · Schema: <a href="schema/ail-v0.1.schema.json">ail-v0.1.schema.json</a> · <a href="https://github.com/ail-spec/ail/blob/main/compatibility/PROTOCOL.md">Test your device and report it</a></p>
+  </footer>
+</main>
+<script>
+const PLATFORMS = [["ios", "iOS"], ["android", "Android"], ["desktop", "Desktop"]];
+function el(tag, attrs, children) {
+  const e = document.createElement(tag);
+  for (const k in attrs || {}) { if (k === "text") e.textContent = attrs[k]; else e.setAttribute(k, attrs[k]); }
+  for (const c of children || []) e.appendChild(c);
+  return e;
+}
+function cell(level, small) {
+  const span = el("span", { class: "cell " + level, text: level });
+  if (small) span.appendChild(el("small", { text: small }));
+  return el("td", {}, [span]);
+}
+function grid(table, providers, key) {
+  table.appendChild(el("tr", {}, [el("th", { text: "Assistant" })].concat(PLATFORMS.map((p) => el("th", { text: p[1] })))));
+  for (const p of providers) {
+    table.appendChild(el("tr", {}, [el("td", { class: "rowhead", text: p.name })].concat(PLATFORMS.map((pl) => cell(p[key][pl[0]])))));
+  }
+}
+fetch("status.json").then((r) => r.json()).then((s) => {
+  const legend = document.getElementById("legend");
+  for (const k in s.evidenceLevels) {
+    legend.appendChild(el("dt", {}, [el("span", { class: "tag " + k, text: k })]));
+    legend.appendChild(el("dd", { text: s.evidenceLevels[k] }));
+  }
+  grid(document.getElementById("t-native"), s.providers, "nativeAppLaunch");
+  grid(document.getElementById("t-prefill"), s.providers, "promptPrefill");
+  const auto = document.getElementById("t-auto");
+  auto.appendChild(el("tr", {}, [el("th", { text: "Assistant" }), el("th", { text: "Evidence" }), el("th", { text: "Detail" })]));
+  for (const p of s.providers) {
+    auto.appendChild(el("tr", {}, [el("td", { class: "rowhead", text: p.name }), cell(p.autoSubmit), el("td", { style: "padding:10px 8px;font-size:14px", text: p.autoSubmitNote })]));
+  }
+  const cards = document.getElementById("cards");
+  for (const p of s.providers) {
+    const list = el("ul");
+    for (const v of p.variants) {
+      list.appendChild(el("li", {}, [
+        el("code", { text: v.url }), document.createTextNode(" "),
+        el("span", { class: "tag " + v.evidence, text: v.evidence }),
+        document.createTextNode(v.experimental ? " experimental. " : " default. "),
+        document.createTextNode(v.note),
+      ]));
+    }
+    cards.appendChild(el("article", { class: "card" }, [
+      el("h3", { text: p.name }),
+      el("p", { text: "Last verified " + p.lastVerified + " (" + p.verificationMethod + ")" }),
+      el("p", { text: "Sign-in: " + p.requiresLogin }),
+      list,
+    ]));
+  }
+}).catch(() => {
+  document.getElementById("cards").appendChild(el("p", { text: "Couldn't load status.json." }));
+});
+</script>
+</body>
+</html>

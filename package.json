@@ -1,0 +1,29 @@
+{
+  "name": "ail-spec",
+  "version": "0.1.0",
+  "description": "AIL (AI Link): an open, provider-neutral format for links that open a person's own AI assistant with a predefined prompt.",
+  "license": "Apache-2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "validate": "node scripts/validate.mjs",
+    "status": "node scripts/build-status.mjs",
+    "matrix": "node compatibility/generate-matrix.mjs",
+    "check:applinks": "node scripts/check-app-links.mjs",
+    "check": "npm run validate && npm run typecheck && npm test && npm run status -- --check"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  }
+}
