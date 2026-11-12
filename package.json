@@ -5,6 +5,22 @@
   "license": "Apache-2.0",
   "private": true,
   "type": "module",
+  "exports": {
+    ".": "./lib/index.ts",
+    "./manifest": "./lib/manifest.ts",
+    "./hidden": "./lib/hidden.ts",
+    "./providers": "./lib/providers/index.ts",
+    "./schema": "./schema/ail-v0.1.schema.json",
+    "./examples/*": "./examples/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "schema",
+    "examples",
+    "LICENSE",
+    "README.md"
+  ],
   "engines": {
     "node": ">=22.18"
   },

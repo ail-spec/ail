@@ -110,6 +110,29 @@ const prompt = sanitizePrompt(manifest.prompt);     // strips invisible characte
 for (const p of providers) console.log(p.name, defaultVariant(p, prompt).url);
 ```
 
+### From another project
+
+The library ships as TypeScript source, with no build step. Install it from GitHub, pinned to a commit:
+
+```bash
+npm install https://codeload.github.com/ail-spec/ail/tar.gz/<commit>
+```
+
+```ts
+import { validateManifest, providers } from "ail-spec";
+import schema from "ail-spec/schema";
+```
+
+In browser code, import only what you need (`ail-spec/providers`, `ail-spec/hidden`), so the schema validator stays out of the bundle.
+
+Your bundler has to compile it (for Next.js, `transpilePackages: ["ail-spec"]`), and TypeScript needs `allowImportingTsExtensions`.
+
+## Implementations
+
+- [Qrompt](https://qrompt.app), the reference implementation: it turns a manifest into a link and a QR code, and shows the message on a landing page before opening the person's assistant.
+
+Built something that reads or writes AIL? Open a pull request to add it here.
+
 ## Contribute
 
 - **Test your phone** and [report what happened](compatibility/PROTOCOL.md). This is the most useful contribution.

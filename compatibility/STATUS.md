@@ -46,7 +46,7 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 | ChatGPT | `chatgpt-web-q-temporary` | `https://chatgpt.com/?q={prompt}&temporary-chat=true` | 🟢 observed | no (experimental) | Community-reported flag; keeps the chat out of history. |
 | ChatGPT | `chatgpt-open` | `https://chatgpt.com/` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
 | Claude | `claude-web-q` | `https://claude.ai/new?q={prompt}` | 🟢 observed | yes | Undocumented ?q= parameter. Device-tested: fills the composer, never sends. A direct camera scan on iOS lost the message. |
-| Claude | `claude-native-scheme` | `claude://claude.ai/new?q={prompt}` | 🟢 observed | no (experimental) | Custom scheme. Opened the app with the message on iOS and Android. Fails if the app is not installed, so lab only. |
+| Claude | `claude-native-scheme` | `claude://claude.ai/new?q={prompt}` | 🟢 observed | no (experimental) | Custom scheme. Opened the app with the message on iOS and Android. Fails if the app is not installed, so it should never be a default. |
 | Claude | `claude-open` | `https://claude.ai/new` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
 | Gemini | `gemini-open` | `https://gemini.google.com/app` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
 | Gemini | `gemini-web-q` | `https://gemini.google.com/app?q={prompt}` | 🟡 conflicting | no (experimental) | Claimed by one generator site; most reports say it needs an extension. |

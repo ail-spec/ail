@@ -73,7 +73,7 @@ export const claude: ProviderAdapter = {
         strategy: "url-prefill",
         experimental: true,
         evidence: "observed",
-        note: "Custom scheme. Opened the app with the message on iOS and Android. Fails if the app is not installed, so lab only.",
+        note: "Custom scheme. Opened the app with the message on iOS and Android. Fails if the app is not installed, so it should never be a default.",
       },
       copyAndOpen(claude),
     ];
