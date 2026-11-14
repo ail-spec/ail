@@ -45,7 +45,7 @@
       "items": { "enum": ["chat", "image", "camera", "voice"] },
       "uniqueItems": true,
       "default": ["chat"],
-      "description": "Capabilities the experience would like. Advisory only; v0.1 consumers only act on 'chat'."
+      "description": "Capabilities the experience would like. Advisory only. A consumer may express 'image' and 'camera' as text in the opening message."
     },
     "publisher": {
       "type": "object",
@@ -58,7 +58,7 @@
     "resources": {
       "type": "array",
       "maxItems": 10,
-      "description": "Optional public references the experience relates to. Not fetched or injected by v0.1 consumers.",
+      "description": "Optional public references the experience relates to. Not fetched by v0.1 consumers. A consumer may list them as text in the opening message.",
       "items": {
         "type": "object",
         "required": ["url"],
