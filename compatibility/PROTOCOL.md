@@ -38,6 +38,10 @@ Always report "the assistant opened" and "the message arrived" separately. They 
 - Only the provider's own documentation justifies **documented**.
 - If your result contradicts the current status, say so. A change from *observed* to *conflicting* is useful information.
 
+## New assistants
+
+Perplexity and Mistral Vibe (Le Chat) have no device results yet. The most useful first rows are their `?q=` variants, signed in and signed out, recording whether the message was sent without a tap (Perplexity reportedly runs it at once).
+
 ## Minimum useful pass
 
 One phone × the default variant of each assistant × {app installed and signed in, special characters, scanned by camera}. That's about 9 rows.

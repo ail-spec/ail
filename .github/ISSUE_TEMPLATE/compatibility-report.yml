@@ -6,7 +6,7 @@ body:
     id: assistant
     attributes:
       label: Assistant
-      options: [ChatGPT, Claude, Gemini, Other]
+      options: [ChatGPT, Claude, Gemini, Perplexity, Mistral Vibe (Le Chat), Other]
     validations:
       required: true
   - type: input

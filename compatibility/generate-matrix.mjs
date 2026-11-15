@@ -8,6 +8,8 @@ const variants = {
   chatgpt: ["chatgpt-web-q", "chatgpt-web-q-temporary", "chatgpt-open"],
   claude: ["claude-web-q", "claude-native-scheme", "claude-open"],
   gemini: ["gemini-open", "gemini-web-q", "gemini-guided-learning-query"],
+  perplexity: ["perplexity-open", "perplexity-web-search-q", "perplexity-web-root-q"],
+  mistral: ["mistral-open", "mistral-web-chat-q"],
 };
 const cases = [
   "app-installed+logged-in",

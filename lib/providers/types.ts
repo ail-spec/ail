@@ -35,7 +35,7 @@ export interface LaunchVariant {
 }
 
 export interface ProviderAdapter {
-  id: "chatgpt" | "claude" | "gemini";
+  id: "chatgpt" | "claude" | "gemini" | "perplexity" | "mistral";
   name: string;
   /** Plain entry point that is safe to open with no parameters. */
   homeUrl: string;

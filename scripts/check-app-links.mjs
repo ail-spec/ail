@@ -4,7 +4,7 @@
 // "open the app with a prompt" via an https link. Run from a machine with internet access.
 //   node scripts/check-app-links.mjs
 
-const hosts = ["chatgpt.com", "claude.ai", "gemini.google.com"];
+const hosts = ["chatgpt.com", "claude.ai", "gemini.google.com", "www.perplexity.ai", "chat.mistral.ai"];
 const files = [".well-known/apple-app-site-association", ".well-known/assetlinks.json"];
 
 for (const host of hosts) {
@@ -42,4 +42,4 @@ for (const host of hosts) {
     }
   }
 }
-console.log("\nCheck: is '/' (ChatGPT) or '/new' (Claude) or '/app' (Gemini) covered, and are query strings excluded?");
+console.log("\nCheck: is '/' (ChatGPT), '/new' (Claude), '/app' (Gemini), '/search' (Perplexity) or '/chat' (Mistral) covered, and are query strings excluded?");

@@ -34,6 +34,28 @@ describe("provider adapters", () => {
     expect(v.url).toBe("https://gemini.google.com/app");
   });
 
+  it("defaults Perplexity and Mistral to copy-and-open until a device test", () => {
+    for (const [id, home] of [["perplexity", "https://www.perplexity.ai/"], ["mistral", "https://chat.mistral.ai/"]]) {
+      const p = getProvider(id)!;
+      const v = defaultVariant(p, "hello");
+      expect(v.strategy).toBe("copy-and-open");
+      expect(v.url).toBe(home);
+      // Nothing is better than "unverified" without provider docs or a device test.
+      for (const x of p.variants("hello")) if (x.strategy === "url-prefill") {
+        expect(x.experimental).toBe(true);
+        expect(x.evidence).toBe("unverified");
+      }
+    }
+  });
+
+  it("round-trips special characters through the experimental Perplexity and Mistral URLs", () => {
+    for (const id of ["perplexity", "mistral"]) {
+      for (const v of getProvider(id)!.variants(special)) {
+        if (v.strategy === "url-prefill") expect(new URL(v.url).searchParams.get("q")).toBe(special);
+      }
+    }
+  });
+
   it("falls back to copy-and-open when the prefill URL would be too long", () => {
     const long = "x".repeat(3000);
     for (const p of providers) {
