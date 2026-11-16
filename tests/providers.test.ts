@@ -34,15 +34,15 @@ describe("provider adapters", () => {
     expect(v.url).toBe("https://gemini.google.com/app");
   });
 
-  it("defaults Perplexity and Mistral to ?q= while keeping the evidence unverified", () => {
+  it("defaults Perplexity and Mistral to ?q=, observed on iPhone and desktop only", () => {
     for (const [id, url] of [["perplexity", "https://www.perplexity.ai/search?q=hello"], ["mistral", "https://chat.mistral.ai/chat?q=hello"]]) {
       const p = getProvider(id)!;
       const v = defaultVariant(p, "hello");
       expect(v.strategy).toBe("url-prefill");
       expect(v.url).toBe(url);
-      // Nothing is better than "unverified" without provider docs or a device test.
-      expect(v.evidence).toBe("unverified");
-      expect(Object.values(p.promptPrefill).every((e) => e === "unverified")).toBe(true);
+      // Device-tested on iPhone and desktop only; no provider documents it.
+      expect(v.evidence).toBe("observed");
+      expect(p.promptPrefill).toEqual({ desktop: "observed", ios: "observed", android: "unverified" });
     }
   });
 

@@ -6,15 +6,25 @@ How ChatGPT, Claude, Gemini, Perplexity and Mistral Vibe (Le Chat) behave when a
 - **[results.csv](results.csv)**: the raw device-test log.
 - **[PROTOCOL.md](PROTOCOL.md)**: how to test your own device and contribute a result.
 
-## Perplexity and Mistral: desk research (2026-11-15)
+## Perplexity and Mistral: device results (2026-11-16)
 
-Added without a device test, so every claim is *unverified*. Since 2026-11-16 the reference adapters still default to `perplexity.ai/search?q=` and `chat.mistral.ai/chat?q=`, because several third parties use them; the evidence stays *unverified* until a device test. Consumers should show the message before launch and offer copy and paste.
+One iPhone 13 (Chrome) and one MacBook Air (Chrome), one tester. **Android was not tested**, so Android stays *unverified*. Neither provider documents a prefill URL, so everything here is *observed* at most.
 
-- **Neither provider documents a prefill URL.** Mistral's help center only says Le Chat became Vibe on 2026-08-12, at the same address (chat.mistral.ai).
-- **Perplexity:** browser search-engine guides use `perplexity.ai/search?q=` or `perplexity.ai/?q=`. As a search engine it runs the query at once, so a person may get no review, like signed-out ChatGPT. The server redirects `/search?q=` to `/search/new?q=`. The iOS universal-link file covers `/search*` but not `/`.
-- **Mistral:** one third-party tool (R package `searcher`) builds `chat.mistral.ai/chat?q=` links. Whether it fills or sends, and what happens signed out, is unknown. The iOS universal-link file covers `/chat/*` but not bare `/chat`, so the link likely stays in the browser.
+| Flow | Perplexity `/search?q=` | Mistral `/chat?q=` |
+|---|---|---|
+| Opens, iPhone | Browser, even from a camera scan | Browser, even from a camera scan (`/chat/?q=` too) |
+| Opens, desktop | Web | Web |
+| Message arrives | ✅ exact, accents, €, emoji, 東京, line breaks | ✅ exact |
+| **Sent by itself** | **Yes, at once**, then asks for an account before answering (iPhone) | **Yes, at once**, signed in or out |
+| Signed out | Asks to sign in; after sign-in the message is gone (iPhone, desktop) | Desktop: kept through sign-in and sent. iPhone: message didn't appear (result contradictory, retest) |
 
-What a device test needs to answer, per provider: does the app open, does the message arrive intact, is it sent without a tap, and does that change when signed out.
+What this means for consumers:
+
+1. **Both send the message with no review.** A page that shows the message before launch, like the one ChatGPT needs for signed-out visitors, is the only review a person gets.
+2. **No app hand-off seen on iPhone**, although both apps' universal-link files cover these paths. Whether the apps were installed wasn't recorded: retest with the apps installed.
+3. `perplexity.ai/?q=` behaves like `/search?q=`, so it stays an experimental alternative.
+
+Desk research before the tests (2026-11-15): formats from third-party sources only (browser search-engine guides for Perplexity, the R package `searcher` for Mistral); Mistral's help center says Le Chat became Vibe on 2026-08-12 at the same address.
 
 ## Device results (2026-11-11)
 

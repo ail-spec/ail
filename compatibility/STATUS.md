@@ -31,8 +31,8 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 | ChatGPT | 🟢 observed | 🟢 observed | 🟢 observed |
 | Claude | 🟢 observed | 🟢 observed | 🟢 observed |
 | Gemini | 🟡 conflicting | 🟡 conflicting | 🟡 conflicting |
-| Perplexity | ⚪ unverified | ⚪ unverified | ⚪ unverified |
-| Mistral | ⚪ unverified | ⚪ unverified | ⚪ unverified |
+| Perplexity | 🟢 observed | ⚪ unverified | 🟢 observed |
+| Mistral | 🟢 observed | ⚪ unverified | 🟢 observed |
 
 ## Sent without the person tapping send
 
@@ -41,8 +41,8 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 | ChatGPT | 🟢 observed | Signed in: fills the composer only. Signed out: sent immediately. |
 | Claude | ❌ unsupported | Never sent by itself in device tests, signed in or out. |
 | Gemini | ⚪ unverified | No prefill by default, so nothing to send. |
-| Perplexity | ⚪ unverified | Reported to run the query as soon as the page loads (search-engine use). Not device-tested. |
-| Mistral | ⚪ unverified | Unknown whether ?q= fills the box or sends. Not device-tested. |
+| Perplexity | 🟢 observed | Runs the question as soon as it opens (device tests 2026-11-16). |
+| Mistral | 🟢 observed | Sends the message as soon as it opens, signed in or out (device tests 2026-11-16). |
 
 ## Launch variants
 
@@ -57,10 +57,10 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 | Gemini | `gemini-open` | `https://gemini.google.com/app` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
 | Gemini | `gemini-web-q` | `https://gemini.google.com/app?q={prompt}` | 🟡 conflicting | no (experimental) | Claimed by one generator site; most reports say it needs an extension. |
 | Gemini | `gemini-guided-learning-query` | `https://gemini.google.com/guided-learning?query={prompt}` | ⚪ unverified | no (experimental) | Reported by an education blog (Dec 2025). Changes Gemini's mode. |
-| Perplexity | `perplexity-web-search-q` | `https://www.perplexity.ai/search?q={prompt}` | ⚪ unverified | yes | Browser search-engine format (third-party guides). Likely runs the query at once. The server redirects to /search/new?q= (seen 2026-11-15; whether the message arrives was not checked). Covered by the iOS universal-link paths. |
-| Perplexity | `perplexity-web-root-q` | `https://www.perplexity.ai/?q={prompt}` | ⚪ unverified | no (experimental) | Alternative path from one guide. Not covered by the iOS universal-link paths, so it likely stays in the browser. |
+| Perplexity | `perplexity-web-search-q` | `https://www.perplexity.ai/search?q={prompt}` | 🟢 observed | yes | Undocumented ?q= parameter (browser search-engine format). Device-tested: the exact message arrives and is sent at once; it opened in the browser, not the app, on iPhone. |
+| Perplexity | `perplexity-web-root-q` | `https://www.perplexity.ai/?q={prompt}` | 🟢 observed | no (experimental) | Alternative path from one guide. Device-tested: behaves like /search?q= (message arrives, sent at once, browser). |
 | Perplexity | `perplexity-open` | `https://www.perplexity.ai/` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
-| Mistral | `mistral-web-chat-q` | `https://chat.mistral.ai/chat?q={prompt}` | ⚪ unverified | yes | Used by one third-party tool. Fill vs. send and signed-out behavior unknown. Not covered by the iOS universal-link paths, so it likely stays in the browser. |
+| Mistral | `mistral-web-chat-q` | `https://chat.mistral.ai/chat?q={prompt}` | 🟢 observed | yes | Undocumented ?q= parameter. Device-tested: the exact message arrives and is sent at once; it opened in the browser on iPhone, as did /chat/?q=. |
 | Mistral | `mistral-open` | `https://chat.mistral.ai/` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
 
 ## Per assistant
@@ -97,8 +97,8 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 
 ### Perplexity
 
-- **Last verified:** 2026-11-15 (desk-research)
-- **Sign-in:** Reportedly no for the web: signed-out searches are allowed. Not device-tested. The app may ask for an account.
+- **Last verified:** 2026-11-16 (device-tested)
+- **Sign-in:** Yes, to get an answer: signed out, the iPhone sent the question and then asked to sign in; after sign-in the message was gone, on the iPhone and on desktop (2026-11-16).
 - **Fallback:** Copy prompt, then open perplexity.ai.
 - **References:**
   - [Perplexity — apple-app-site-association (iOS universal links)](https://www.perplexity.ai/.well-known/apple-app-site-association) (official): Provider-published file, read 2026-11-15. Lists /search and /search/* for the iOS app; documents no URL parameters.
@@ -108,8 +108,8 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 
 ### Mistral
 
-- **Last verified:** 2026-11-15 (desk-research)
-- **Sign-in:** Unverified. Signed-out behavior of the web app and of ?q= has not been tested.
+- **Last verified:** 2026-11-16 (device-tested)
+- **Sign-in:** Signed out it asks to sign in. Desktop kept the message through sign-in; on the iPhone the message didn't appear (2026-11-16).
 - **Fallback:** Copy prompt, then open chat.mistral.ai.
 - **References:**
   - [Mistral Help Center — Le Chat is now Vibe](https://help.mistral.ai/en/articles/682992-le-chat-is-now-vibe) (official): Renamed 2026-08-12; same URL (chat.mistral.ai) and login. Mentions no URL parameters.

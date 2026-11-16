@@ -8,28 +8,27 @@ export const mistral: ProviderAdapter = {
   homeUrl: "https://chat.mistral.ai/",
   platforms: ["ios", "android", "desktop"],
   urlSchemes: { web: "https://chat.mistral.ai/chat?q={prompt}" },
-  // Desk research 2026-11-15. No device test yet, and Mistral documents no prefill URL.
+  // Device tests 2026-11-16 (compatibility/results.csv): iPhone 13 (Chrome) and a MacBook Air
+  // (Chrome). Android was not tested. Not documented by Mistral, so "observed" at most.
   nativeAppLaunch: {
-    // The iOS app's universal links cover /chat/* (with the slash), /incognito, /work and /code,
-    // but not bare /chat or "/", so /chat?q= and the home page most likely stay in the browser.
-    // Not tested.
+    // Every iPhone test opened the browser, /chat/?q= (covered by the app's universal links)
+    // included. Whether the app was installed wasn't recorded.
     ios: "unverified",
-    // assetlinks.json delegates to ai.mistral.chat; the claimed paths live in the app manifest,
-    // which we haven't checked. Not tested.
-    android: "unverified",
-    desktop: "unverified",
+    android: "unverified", // not tested
+    desktop: "unverified", // only the web app was tested
   },
   promptPrefill: {
-    // One third-party source (R package `searcher`, ask_mistral) builds /chat?q= links.
-    desktop: "unverified",
-    ios: "unverified",
-    android: "unverified",
+    desktop: "observed", // exact, accents, €, emoji and line breaks included
+    ios: "observed",
+    android: "unverified", // not tested
   },
-  autoSubmit: "unverified",
-  autoSubmitNote: "Unknown whether ?q= fills the box or sends. Not device-tested.",
+  // Sent straight away in every test, signed in and signed out.
+  autoSubmit: "observed",
+  autoSubmitNote: "Sends the message as soon as it opens, signed in or out (device tests 2026-11-16).",
   maxPromptLength: null,
   safeUrlLength: 2000,
-  requiresLogin: "Unverified. Signed-out behavior of the web app and of ?q= has not been tested.",
+  requiresLogin:
+    "Signed out it asks to sign in. Desktop kept the message through sign-in; on the iPhone the message didn't appear (2026-11-16).",
   requiresInstall: "No (web). App optional.",
   fallback: "Copy prompt, then open chat.mistral.ai.",
   docs: [
@@ -52,20 +51,20 @@ export const mistral: ProviderAdapter = {
       note: "Builds chat.mistral.ai/chat?q= links. Says nothing about auto-send or sign-in.",
     },
   ],
-  lastVerified: "2026-11-15",
-  verificationMethod: "desk-research",
+  lastVerified: "2026-11-16",
+  verificationMethod: "device-tested",
   variants(prompt) {
     const q = encodeURIComponent(prompt);
     return [
-      // Default since 2026-11-16, before any device test. Evidence stays "unverified" until one.
+      // Sends at once, so a consumer should show the message before launch.
       {
         id: "mistral-web-chat-q",
         label: "Open Mistral with prompt",
         url: `https://chat.mistral.ai/chat?q=${q}`,
         strategy: "url-prefill",
         experimental: false,
-        evidence: "unverified",
-        note: "Used by one third-party tool. Fill vs. send and signed-out behavior unknown. Not covered by the iOS universal-link paths, so it likely stays in the browser.",
+        evidence: "observed",
+        note: "Undocumented ?q= parameter. Device-tested: the exact message arrives and is sent at once; it opened in the browser on iPhone, as did /chat/?q=.",
       },
       copyAndOpen(mistral),
     ];

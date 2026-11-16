@@ -40,7 +40,7 @@ Always report "the assistant opened" and "the message arrived" separately. They 
 
 ## New assistants
 
-Perplexity and Mistral Vibe (Le Chat) have no device results yet. The most useful first rows are their `?q=` variants, signed in and signed out, recording whether the message was sent without a tap (Perplexity reportedly runs it at once).
+Perplexity and Mistral were tested on an iPhone and a desktop browser (2026-11-16). Most wanted now: **any Android result**, and an iPhone run with the Perplexity and Mistral apps installed and signed in (both opened in the browser, and app installation wasn't recorded).
 
 ## Minimum useful pass
 

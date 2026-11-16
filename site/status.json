@@ -219,8 +219,8 @@
       "id": "perplexity",
       "name": "Perplexity",
       "homeUrl": "https://www.perplexity.ai/",
-      "lastVerified": "2026-11-15",
-      "verificationMethod": "desk-research",
+      "lastVerified": "2026-11-16",
+      "verificationMethod": "device-tested",
       "defaultStrategy": "url-prefill",
       "nativeAppLaunch": {
         "ios": "unverified",
@@ -228,13 +228,13 @@
         "desktop": "unverified"
       },
       "promptPrefill": {
-        "desktop": "unverified",
-        "ios": "unverified",
+        "desktop": "observed",
+        "ios": "observed",
         "android": "unverified"
       },
-      "autoSubmit": "unverified",
-      "autoSubmitNote": "Reported to run the query as soon as the page loads (search-engine use). Not device-tested.",
-      "requiresLogin": "Reportedly no for the web: signed-out searches are allowed. Not device-tested. The app may ask for an account.",
+      "autoSubmit": "observed",
+      "autoSubmitNote": "Runs the question as soon as it opens (device tests 2026-11-16).",
+      "requiresLogin": "Yes, to get an answer: signed out, the iPhone sent the question and then asked to sign in; after sign-in the message was gone, on the iPhone and on desktop (2026-11-16).",
       "fallback": "Copy prompt, then open perplexity.ai.",
       "safeUrlLength": 2000,
       "variants": [
@@ -243,16 +243,16 @@
           "url": "https://www.perplexity.ai/search?q={prompt}",
           "strategy": "url-prefill",
           "experimental": false,
-          "evidence": "unverified",
-          "note": "Browser search-engine format (third-party guides). Likely runs the query at once. The server redirects to /search/new?q= (seen 2026-11-15; whether the message arrives was not checked). Covered by the iOS universal-link paths."
+          "evidence": "observed",
+          "note": "Undocumented ?q= parameter (browser search-engine format). Device-tested: the exact message arrives and is sent at once; it opened in the browser, not the app, on iPhone."
         },
         {
           "id": "perplexity-web-root-q",
           "url": "https://www.perplexity.ai/?q={prompt}",
           "strategy": "url-prefill",
           "experimental": true,
-          "evidence": "unverified",
-          "note": "Alternative path from one guide. Not covered by the iOS universal-link paths, so it likely stays in the browser."
+          "evidence": "observed",
+          "note": "Alternative path from one guide. Device-tested: behaves like /search?q= (message arrives, sent at once, browser)."
         },
         {
           "id": "perplexity-open",
@@ -294,8 +294,8 @@
       "id": "mistral",
       "name": "Mistral",
       "homeUrl": "https://chat.mistral.ai/",
-      "lastVerified": "2026-11-15",
-      "verificationMethod": "desk-research",
+      "lastVerified": "2026-11-16",
+      "verificationMethod": "device-tested",
       "defaultStrategy": "url-prefill",
       "nativeAppLaunch": {
         "ios": "unverified",
@@ -303,13 +303,13 @@
         "desktop": "unverified"
       },
       "promptPrefill": {
-        "desktop": "unverified",
-        "ios": "unverified",
+        "desktop": "observed",
+        "ios": "observed",
         "android": "unverified"
       },
-      "autoSubmit": "unverified",
-      "autoSubmitNote": "Unknown whether ?q= fills the box or sends. Not device-tested.",
-      "requiresLogin": "Unverified. Signed-out behavior of the web app and of ?q= has not been tested.",
+      "autoSubmit": "observed",
+      "autoSubmitNote": "Sends the message as soon as it opens, signed in or out (device tests 2026-11-16).",
+      "requiresLogin": "Signed out it asks to sign in. Desktop kept the message through sign-in; on the iPhone the message didn't appear (2026-11-16).",
       "fallback": "Copy prompt, then open chat.mistral.ai.",
       "safeUrlLength": 2000,
       "variants": [
@@ -318,8 +318,8 @@
           "url": "https://chat.mistral.ai/chat?q={prompt}",
           "strategy": "url-prefill",
           "experimental": false,
-          "evidence": "unverified",
-          "note": "Used by one third-party tool. Fill vs. send and signed-out behavior unknown. Not covered by the iOS universal-link paths, so it likely stays in the browser."
+          "evidence": "observed",
+          "note": "Undocumented ?q= parameter. Device-tested: the exact message arrives and is sent at once; it opened in the browser on iPhone, as did /chat/?q=."
         },
         {
           "id": "mistral-open",

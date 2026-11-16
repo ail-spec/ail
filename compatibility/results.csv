@@ -102,12 +102,12 @@ ios,perplexity,perplexity-open,opened-from-WhatsApp,,,,,,,,,,,
 ios,perplexity,perplexity-web-search-q,app-installed+logged-in,,,,,,,,,,,
 ios,perplexity,perplexity-web-search-q,app-installed+logged-out,,,,,,,,,,,
 ios,perplexity,perplexity-web-search-q,app-not-installed+logged-in(web),,,,,,,,,,,
-ios,perplexity,perplexity-web-search-q,app-not-installed+logged-out(web),,,,,,,,,,,
-ios,perplexity,perplexity-web-search-q,short-prompt,,,,,,,,,,,
+ios,perplexity,perplexity-web-search-q,app-not-installed+logged-out(web),n,y,y,,sign-in asked; message lost after sign-in,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,"r2-iphone-04: private tab. Sent at once, asked to sign in; afterwards Perplexity asked to repeat the question."
+ios,perplexity,perplexity-web-search-q,short-prompt,n,y,y,,,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,"r2-iphone-01: sent at once, then asked to sign in before answering."
 ios,perplexity,perplexity-web-search-q,long-prompt(~1800 chars),,,,,,,,,,,
-ios,perplexity,perplexity-web-search-q,special-chars+non-English,,,,,,,,,,,
+ios,perplexity,perplexity-web-search-q,special-chars+non-English,n,y,y,,,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,"r2-iphone-03: accents, €, emoji, 東京 and line breaks exact; sent at once, then asked to sign in."
 ios,perplexity,perplexity-web-search-q,opened-from-QR-camera,,,,,,,,,,,
-ios,perplexity,perplexity-web-search-q,direct-QR-camera(no landing page),,,,,,,,,,,
+ios,perplexity,perplexity-web-search-q,direct-QR-camera(no landing page),n,y,y,,,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,"r2-iphone-02: camera scan opened the browser, not the app; sent at once, then asked to sign in."
 ios,perplexity,perplexity-web-search-q,opened-from-WhatsApp,,,,,,,,,,,
 ios,perplexity,perplexity-web-root-q,app-installed+logged-in,,,,,,,,,,,
 ios,perplexity,perplexity-web-root-q,app-installed+logged-out,,,,,,,,,,,
@@ -117,7 +117,7 @@ ios,perplexity,perplexity-web-root-q,short-prompt,,,,,,,,,,,
 ios,perplexity,perplexity-web-root-q,long-prompt(~1800 chars),,,,,,,,,,,
 ios,perplexity,perplexity-web-root-q,special-chars+non-English,,,,,,,,,,,
 ios,perplexity,perplexity-web-root-q,opened-from-QR-camera,,,,,,,,,,,
-ios,perplexity,perplexity-web-root-q,direct-QR-camera(no landing page),,,,,,,,,,,
+ios,perplexity,perplexity-web-root-q,direct-QR-camera(no landing page),n,y,y,,,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,r2-iphone-05: same as /search?q=.
 ios,perplexity,perplexity-web-root-q,opened-from-WhatsApp,,,,,,,,,,,
 ios,mistral,mistral-open,app-installed+logged-in,,,,,,,,,,,
 ios,mistral,mistral-open,app-installed+logged-out,,,,,,,,,,,
@@ -132,12 +132,12 @@ ios,mistral,mistral-open,opened-from-WhatsApp,,,,,,,,,,,
 ios,mistral,mistral-web-chat-q,app-installed+logged-in,,,,,,,,,,,
 ios,mistral,mistral-web-chat-q,app-installed+logged-out,,,,,,,,,,,
 ios,mistral,mistral-web-chat-q,app-not-installed+logged-in(web),,,,,,,,,,,
-ios,mistral,mistral-web-chat-q,app-not-installed+logged-out(web),,,,,,,,,,,
-ios,mistral,mistral-web-chat-q,short-prompt,,,,,,,,,,,
+ios,mistral,mistral-web-chat-q,app-not-installed+logged-out(web),n,n,y,,sign-in asked,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,"r2-iphone-09: private tab. Recorded as 'asked, message kept' but message 'no' and sent 'yes': contradictory, retest."
+ios,mistral,mistral-web-chat-q,short-prompt,n,y,y,,,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,r2-iphone-06: browser; sent at once.
 ios,mistral,mistral-web-chat-q,long-prompt(~1800 chars),,,,,,,,,,,
-ios,mistral,mistral-web-chat-q,special-chars+non-English,,,,,,,,,,,
+ios,mistral,mistral-web-chat-q,special-chars+non-English,n,y,y,,,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,"r2-iphone-08: accents, €, emoji, 東京 and line breaks exact; sent at once."
 ios,mistral,mistral-web-chat-q,opened-from-QR-camera,,,,,,,,,,,
-ios,mistral,mistral-web-chat-q,direct-QR-camera(no landing page),,,,,,,,,,,
+ios,mistral,mistral-web-chat-q,direct-QR-camera(no landing page),n,y,y,,,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,"r2-iphone-07: camera scan opened the browser; sent at once. r2-iphone-10: chat.mistral.ai/chat/?q= (with slash) also opened the browser, message exact, sent at once."
 ios,mistral,mistral-web-chat-q,opened-from-WhatsApp,,,,,,,,,,,
 android,chatgpt,chatgpt-web-q,app-installed+logged-in,,,,,,,,,,,
 android,chatgpt,chatgpt-web-q,app-installed+logged-out,n,y,y,,,observed,device test 2026-11-11,2026-11-11,Android phone (model not recorded); Chrome,maintainer,"Private Chrome tab stayed in the browser, signed out. test android-11"
@@ -340,14 +340,14 @@ macos,perplexity,perplexity-open,long-prompt(~1800 chars),,,,,,,,,,,
 macos,perplexity,perplexity-open,special-chars+non-English,,,,,,,,,,,
 macos,perplexity,perplexity-open,opened-from-WhatsApp,,,,,,,,,,,
 macos,perplexity,perplexity-web-search-q,app-not-installed+logged-in(web),,,,,,,,,,,
-macos,perplexity,perplexity-web-search-q,app-not-installed+logged-out(web),,,,,,,,,,,
-macos,perplexity,perplexity-web-search-q,short-prompt,,,,,,,,,,,
+macos,perplexity,perplexity-web-search-q,app-not-installed+logged-out(web),n,y,n,,sign-in asked; message lost after sign-in,observed,device test 2026-11-16,2026-11-16,MacBook Air; Chrome 156.0.8078.79,maintainer,r2-computer-03: private window. Not sent; asked to sign in and the message was gone afterwards.
+macos,perplexity,perplexity-web-search-q,short-prompt,n,y,y,,,observed,device test 2026-11-16,2026-11-16,MacBook Air; Chrome 156.0.8078.79,maintainer,r2-computer-01: sent at once.
 macos,perplexity,perplexity-web-search-q,long-prompt(~1800 chars),,,,,,,,,,,
-macos,perplexity,perplexity-web-search-q,special-chars+non-English,,,,,,,,,,,
+macos,perplexity,perplexity-web-search-q,special-chars+non-English,n,y,y,,,observed,device test 2026-11-16,2026-11-16,MacBook Air; Chrome 156.0.8078.79,maintainer,r2-computer-02: text exact; sent at once.
 macos,perplexity,perplexity-web-search-q,opened-from-WhatsApp,,,,,,,,,,,
 macos,perplexity,perplexity-web-root-q,app-not-installed+logged-in(web),,,,,,,,,,,
 macos,perplexity,perplexity-web-root-q,app-not-installed+logged-out(web),,,,,,,,,,,
-macos,perplexity,perplexity-web-root-q,short-prompt,,,,,,,,,,,
+macos,perplexity,perplexity-web-root-q,short-prompt,n,y,y,,,observed,device test 2026-11-16,2026-11-16,MacBook Air; Chrome 156.0.8078.79,maintainer,r2-computer-04: same as /search?q=.
 macos,perplexity,perplexity-web-root-q,long-prompt(~1800 chars),,,,,,,,,,,
 macos,perplexity,perplexity-web-root-q,special-chars+non-English,,,,,,,,,,,
 macos,perplexity,perplexity-web-root-q,opened-from-WhatsApp,,,,,,,,,,,
@@ -358,10 +358,10 @@ macos,mistral,mistral-open,long-prompt(~1800 chars),,,,,,,,,,,
 macos,mistral,mistral-open,special-chars+non-English,,,,,,,,,,,
 macos,mistral,mistral-open,opened-from-WhatsApp,,,,,,,,,,,
 macos,mistral,mistral-web-chat-q,app-not-installed+logged-in(web),,,,,,,,,,,
-macos,mistral,mistral-web-chat-q,app-not-installed+logged-out(web),,,,,,,,,,,
-macos,mistral,mistral-web-chat-q,short-prompt,,,,,,,,,,,
+macos,mistral,mistral-web-chat-q,app-not-installed+logged-out(web),n,y,y,,sign-in asked; message kept,observed,device test 2026-11-16,2026-11-16,MacBook Air; Chrome 156.0.8078.79,maintainer,r2-computer-07: private window. Message kept through sign-in and sent.
+macos,mistral,mistral-web-chat-q,short-prompt,n,y,y,,,observed,device test 2026-11-16,2026-11-16,MacBook Air; Chrome 156.0.8078.79,maintainer,r2-computer-05: sent at once.
 macos,mistral,mistral-web-chat-q,long-prompt(~1800 chars),,,,,,,,,,,
-macos,mistral,mistral-web-chat-q,special-chars+non-English,,,,,,,,,,,
+macos,mistral,mistral-web-chat-q,special-chars+non-English,n,y,y,,,observed,device test 2026-11-16,2026-11-16,MacBook Air; Chrome 156.0.8078.79,maintainer,r2-computer-06: text exact; sent at once.
 macos,mistral,mistral-web-chat-q,opened-from-WhatsApp,,,,,,,,,,,
 windows,chatgpt,chatgpt-web-q,app-not-installed+logged-in(web),,,,,,,,,,,
 windows,chatgpt,chatgpt-web-q,app-not-installed+logged-out(web),,,,,,,,,,,
