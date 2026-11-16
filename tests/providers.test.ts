@@ -34,21 +34,19 @@ describe("provider adapters", () => {
     expect(v.url).toBe("https://gemini.google.com/app");
   });
 
-  it("defaults Perplexity and Mistral to copy-and-open until a device test", () => {
-    for (const [id, home] of [["perplexity", "https://www.perplexity.ai/"], ["mistral", "https://chat.mistral.ai/"]]) {
+  it("defaults Perplexity and Mistral to ?q= while keeping the evidence unverified", () => {
+    for (const [id, url] of [["perplexity", "https://www.perplexity.ai/search?q=hello"], ["mistral", "https://chat.mistral.ai/chat?q=hello"]]) {
       const p = getProvider(id)!;
       const v = defaultVariant(p, "hello");
-      expect(v.strategy).toBe("copy-and-open");
-      expect(v.url).toBe(home);
+      expect(v.strategy).toBe("url-prefill");
+      expect(v.url).toBe(url);
       // Nothing is better than "unverified" without provider docs or a device test.
-      for (const x of p.variants("hello")) if (x.strategy === "url-prefill") {
-        expect(x.experimental).toBe(true);
-        expect(x.evidence).toBe("unverified");
-      }
+      expect(v.evidence).toBe("unverified");
+      expect(Object.values(p.promptPrefill).every((e) => e === "unverified")).toBe(true);
     }
   });
 
-  it("round-trips special characters through the experimental Perplexity and Mistral URLs", () => {
+  it("round-trips special characters through the Perplexity and Mistral URLs", () => {
     for (const id of ["perplexity", "mistral"]) {
       for (const v of getProvider(id)!.variants(special)) {
         if (v.strategy === "url-prefill") expect(new URL(v.url).searchParams.get("q")).toBe(special);

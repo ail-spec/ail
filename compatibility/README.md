@@ -8,7 +8,7 @@ How ChatGPT, Claude, Gemini, Perplexity and Mistral Vibe (Le Chat) behave when a
 
 ## Perplexity and Mistral: desk research (2026-11-15)
 
-Added without a device test, so every claim is *unverified* and both default to copy-and-open. Their `?q=` variants are experimental (test only).
+Added without a device test, so every claim is *unverified*. Since 2026-11-16 the reference adapters still default to `perplexity.ai/search?q=` and `chat.mistral.ai/chat?q=`, because several third parties use them; the evidence stays *unverified* until a device test. Consumers should show the message before launch and offer copy and paste.
 
 - **Neither provider documents a prefill URL.** Mistral's help center only says Le Chat became Vibe on 2026-08-12, at the same address (chat.mistral.ai).
 - **Perplexity:** browser search-engine guides use `perplexity.ai/search?q=` or `perplexity.ai/?q=`. As a search engine it runs the query at once, so a person may get no review, like signed-out ChatGPT. The server redirects `/search?q=` to `/search/new?q=`. The iOS universal-link file covers `/search*` but not `/`.

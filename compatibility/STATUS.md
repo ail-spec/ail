@@ -22,7 +22,7 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 | Claude | 🟢 observed | 🟢 observed | ⚪ unverified |
 | Gemini | 🟢 observed | ⚪ unverified | ❌ unsupported |
 | Perplexity | ⚪ unverified | ⚪ unverified | ⚪ unverified |
-| Mistral Vibe (Le Chat) | ⚪ unverified | ⚪ unverified | ⚪ unverified |
+| Mistral | ⚪ unverified | ⚪ unverified | ⚪ unverified |
 
 ## Prompt arrives in the chat box
 
@@ -32,7 +32,7 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 | Claude | 🟢 observed | 🟢 observed | 🟢 observed |
 | Gemini | 🟡 conflicting | 🟡 conflicting | 🟡 conflicting |
 | Perplexity | ⚪ unverified | ⚪ unverified | ⚪ unverified |
-| Mistral Vibe (Le Chat) | ⚪ unverified | ⚪ unverified | ⚪ unverified |
+| Mistral | ⚪ unverified | ⚪ unverified | ⚪ unverified |
 
 ## Sent without the person tapping send
 
@@ -42,7 +42,7 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 | Claude | ❌ unsupported | Never sent by itself in device tests, signed in or out. |
 | Gemini | ⚪ unverified | No prefill by default, so nothing to send. |
 | Perplexity | ⚪ unverified | Reported to run the query as soon as the page loads (search-engine use). Not device-tested. |
-| Mistral Vibe (Le Chat) | ⚪ unverified | Unknown whether ?q= fills the box or sends. Not device-tested. |
+| Mistral | ⚪ unverified | Unknown whether ?q= fills the box or sends. Not device-tested. |
 
 ## Launch variants
 
@@ -57,11 +57,11 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 | Gemini | `gemini-open` | `https://gemini.google.com/app` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
 | Gemini | `gemini-web-q` | `https://gemini.google.com/app?q={prompt}` | 🟡 conflicting | no (experimental) | Claimed by one generator site; most reports say it needs an extension. |
 | Gemini | `gemini-guided-learning-query` | `https://gemini.google.com/guided-learning?query={prompt}` | ⚪ unverified | no (experimental) | Reported by an education blog (Dec 2025). Changes Gemini's mode. |
-| Perplexity | `perplexity-open` | `https://www.perplexity.ai/` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
-| Perplexity | `perplexity-web-search-q` | `https://www.perplexity.ai/search?q={prompt}` | ⚪ unverified | no (experimental) | Browser search-engine format (third-party guides). Likely runs the query at once. The server redirects to /search/new?q= (seen 2026-11-15; whether the message arrives was not checked). Covered by the iOS universal-link paths. |
+| Perplexity | `perplexity-web-search-q` | `https://www.perplexity.ai/search?q={prompt}` | ⚪ unverified | yes | Browser search-engine format (third-party guides). Likely runs the query at once. The server redirects to /search/new?q= (seen 2026-11-15; whether the message arrives was not checked). Covered by the iOS universal-link paths. |
 | Perplexity | `perplexity-web-root-q` | `https://www.perplexity.ai/?q={prompt}` | ⚪ unverified | no (experimental) | Alternative path from one guide. Not covered by the iOS universal-link paths, so it likely stays in the browser. |
-| Mistral Vibe (Le Chat) | `mistral-open` | `https://chat.mistral.ai/` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
-| Mistral Vibe (Le Chat) | `mistral-web-chat-q` | `https://chat.mistral.ai/chat?q={prompt}` | ⚪ unverified | no (experimental) | Used by one third-party tool. Fill vs. send and signed-out behavior unknown. Not covered by the iOS universal-link paths, so it likely stays in the browser. |
+| Perplexity | `perplexity-open` | `https://www.perplexity.ai/` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
+| Mistral | `mistral-web-chat-q` | `https://chat.mistral.ai/chat?q={prompt}` | ⚪ unverified | yes | Used by one third-party tool. Fill vs. send and signed-out behavior unknown. Not covered by the iOS universal-link paths, so it likely stays in the browser. |
+| Mistral | `mistral-open` | `https://chat.mistral.ai/` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
 
 ## Per assistant
 
@@ -99,18 +99,18 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 
 - **Last verified:** 2026-11-15 (desk-research)
 - **Sign-in:** Reportedly no for the web: signed-out searches are allowed. Not device-tested. The app may ask for an account.
-- **Fallback:** Copy prompt, then open perplexity.ai. This is the default until a device test.
+- **Fallback:** Copy prompt, then open perplexity.ai.
 - **References:**
   - [Perplexity — apple-app-site-association (iOS universal links)](https://www.perplexity.ai/.well-known/apple-app-site-association) (official): Provider-published file, read 2026-11-15. Lists /search and /search/* for the iOS app; documents no URL parameters.
   - [SSW Rules — Make Perplexity your default search engine](https://www.ssw.com.au/rules-beta/make-perplexity-your-default-search-engine) (third-party): Uses https://www.perplexity.ai/search?q=%s as a browser search engine.
   - [Alphr — Set Perplexity as default search engine](https://www.alphr.com/set-perplexity-as-default-search-engine/) (third-party): Uses https://www.perplexity.ai/?q=%s instead. Disagrees with the path above.
   - [u2l.ai — Perplexity prompt link generator](https://u2l.ai/tools/perplexity-prompt-link-generator) (third-party): Claims /search/?q= pre-loads the query and runs it on page load. Unverified.
 
-### Mistral Vibe (Le Chat)
+### Mistral
 
 - **Last verified:** 2026-11-15 (desk-research)
 - **Sign-in:** Unverified. Signed-out behavior of the web app and of ?q= has not been tested.
-- **Fallback:** Copy prompt, then open chat.mistral.ai. This is the default until a device test.
+- **Fallback:** Copy prompt, then open chat.mistral.ai.
 - **References:**
   - [Mistral Help Center — Le Chat is now Vibe](https://help.mistral.ai/en/articles/682992-le-chat-is-now-vibe) (official): Renamed 2026-08-12; same URL (chat.mistral.ai) and login. Mentions no URL parameters.
   - [Mistral — apple-app-site-association (iOS universal links)](https://chat.mistral.ai/.well-known/apple-app-site-association) (official): Provider-published file, read 2026-11-15. Covers /chat/* but not bare /chat; documents no URL parameters.

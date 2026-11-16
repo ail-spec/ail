@@ -221,7 +221,7 @@
       "homeUrl": "https://www.perplexity.ai/",
       "lastVerified": "2026-11-15",
       "verificationMethod": "desk-research",
-      "defaultStrategy": "copy-and-open",
+      "defaultStrategy": "url-prefill",
       "nativeAppLaunch": {
         "ios": "unverified",
         "android": "unverified",
@@ -235,22 +235,14 @@
       "autoSubmit": "unverified",
       "autoSubmitNote": "Reported to run the query as soon as the page loads (search-engine use). Not device-tested.",
       "requiresLogin": "Reportedly no for the web: signed-out searches are allowed. Not device-tested. The app may ask for an account.",
-      "fallback": "Copy prompt, then open perplexity.ai. This is the default until a device test.",
+      "fallback": "Copy prompt, then open perplexity.ai.",
       "safeUrlLength": 2000,
       "variants": [
-        {
-          "id": "perplexity-open",
-          "url": "https://www.perplexity.ai/",
-          "strategy": "copy-and-open",
-          "experimental": false,
-          "evidence": "documented",
-          "note": "Opens the provider's normal entry point. No prompt is transferred; the person pastes it."
-        },
         {
           "id": "perplexity-web-search-q",
           "url": "https://www.perplexity.ai/search?q={prompt}",
           "strategy": "url-prefill",
-          "experimental": true,
+          "experimental": false,
           "evidence": "unverified",
           "note": "Browser search-engine format (third-party guides). Likely runs the query at once. The server redirects to /search/new?q= (seen 2026-11-15; whether the message arrives was not checked). Covered by the iOS universal-link paths."
         },
@@ -261,6 +253,14 @@
           "experimental": true,
           "evidence": "unverified",
           "note": "Alternative path from one guide. Not covered by the iOS universal-link paths, so it likely stays in the browser."
+        },
+        {
+          "id": "perplexity-open",
+          "url": "https://www.perplexity.ai/",
+          "strategy": "copy-and-open",
+          "experimental": false,
+          "evidence": "documented",
+          "note": "Opens the provider's normal entry point. No prompt is transferred; the person pastes it."
         }
       ],
       "docs": [
@@ -292,11 +292,11 @@
     },
     {
       "id": "mistral",
-      "name": "Mistral Vibe (Le Chat)",
+      "name": "Mistral",
       "homeUrl": "https://chat.mistral.ai/",
       "lastVerified": "2026-11-15",
       "verificationMethod": "desk-research",
-      "defaultStrategy": "copy-and-open",
+      "defaultStrategy": "url-prefill",
       "nativeAppLaunch": {
         "ios": "unverified",
         "android": "unverified",
@@ -310,9 +310,17 @@
       "autoSubmit": "unverified",
       "autoSubmitNote": "Unknown whether ?q= fills the box or sends. Not device-tested.",
       "requiresLogin": "Unverified. Signed-out behavior of the web app and of ?q= has not been tested.",
-      "fallback": "Copy prompt, then open chat.mistral.ai. This is the default until a device test.",
+      "fallback": "Copy prompt, then open chat.mistral.ai.",
       "safeUrlLength": 2000,
       "variants": [
+        {
+          "id": "mistral-web-chat-q",
+          "url": "https://chat.mistral.ai/chat?q={prompt}",
+          "strategy": "url-prefill",
+          "experimental": false,
+          "evidence": "unverified",
+          "note": "Used by one third-party tool. Fill vs. send and signed-out behavior unknown. Not covered by the iOS universal-link paths, so it likely stays in the browser."
+        },
         {
           "id": "mistral-open",
           "url": "https://chat.mistral.ai/",
@@ -320,14 +328,6 @@
           "experimental": false,
           "evidence": "documented",
           "note": "Opens the provider's normal entry point. No prompt is transferred; the person pastes it."
-        },
-        {
-          "id": "mistral-web-chat-q",
-          "url": "https://chat.mistral.ai/chat?q={prompt}",
-          "strategy": "url-prefill",
-          "experimental": true,
-          "evidence": "unverified",
-          "note": "Used by one third-party tool. Fill vs. send and signed-out behavior unknown. Not covered by the iOS universal-link paths, so it likely stays in the browser."
         }
       ],
       "docs": [

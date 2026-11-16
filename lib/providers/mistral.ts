@@ -1,10 +1,10 @@
 import { copyAndOpen, type ProviderAdapter } from "./types.ts";
 
 // Mistral renamed Le Chat to Vibe on 2026-08-12 (Mistral Help Center). Same URL and login:
-// chat.mistral.ai. "Le Chat" is kept in the name because that is what most people search for.
+// chat.mistral.ai. The display name is just "Mistral", which covers both.
 export const mistral: ProviderAdapter = {
   id: "mistral",
-  name: "Mistral Vibe (Le Chat)",
+  name: "Mistral",
   homeUrl: "https://chat.mistral.ai/",
   platforms: ["ios", "android", "desktop"],
   urlSchemes: { web: "https://chat.mistral.ai/chat?q={prompt}" },
@@ -31,7 +31,7 @@ export const mistral: ProviderAdapter = {
   safeUrlLength: 2000,
   requiresLogin: "Unverified. Signed-out behavior of the web app and of ?q= has not been tested.",
   requiresInstall: "No (web). App optional.",
-  fallback: "Copy prompt, then open chat.mistral.ai. This is the default until a device test.",
+  fallback: "Copy prompt, then open chat.mistral.ai.",
   docs: [
     {
       title: "Mistral Help Center — Le Chat is now Vibe",
@@ -57,17 +57,17 @@ export const mistral: ProviderAdapter = {
   variants(prompt) {
     const q = encodeURIComponent(prompt);
     return [
-      // Default is copy-and-open until a device test shows what ?q= does.
-      copyAndOpen(mistral),
+      // Default since 2026-11-16, before any device test. Evidence stays "unverified" until one.
       {
         id: "mistral-web-chat-q",
-        label: "Mistral /chat?q= (test)",
+        label: "Open Mistral with prompt",
         url: `https://chat.mistral.ai/chat?q=${q}`,
         strategy: "url-prefill",
-        experimental: true,
+        experimental: false,
         evidence: "unverified",
         note: "Used by one third-party tool. Fill vs. send and signed-out behavior unknown. Not covered by the iOS universal-link paths, so it likely stays in the browser.",
       },
+      copyAndOpen(mistral),
     ];
   },
 };

@@ -33,7 +33,7 @@ export const perplexity: ProviderAdapter = {
   requiresLogin:
     "Reportedly no for the web: signed-out searches are allowed. Not device-tested. The app may ask for an account.",
   requiresInstall: "No (web). App optional.",
-  fallback: "Copy prompt, then open perplexity.ai. This is the default until a device test.",
+  fallback: "Copy prompt, then open perplexity.ai.",
   docs: [
     {
       title: "Perplexity — apple-app-site-association (iOS universal links)",
@@ -65,15 +65,15 @@ export const perplexity: ProviderAdapter = {
   variants(prompt) {
     const q = encodeURIComponent(prompt);
     return [
-      // Default is copy-and-open: the prefill is unverified and likely runs immediately, so a
-      // consumer must not send people there by default before a device test.
-      copyAndOpen(perplexity),
+      // Default since 2026-11-16, before any device test: several third parties use this format.
+      // Evidence stays "unverified" until a device test. It likely runs the query at once, so a
+      // consumer should show the message before launch (as for signed-out ChatGPT).
       {
         id: "perplexity-web-search-q",
-        label: "Perplexity /search?q= (test)",
+        label: "Open Perplexity with prompt",
         url: `https://www.perplexity.ai/search?q=${q}`,
         strategy: "url-prefill",
-        experimental: true,
+        experimental: false,
         evidence: "unverified",
         note: "Browser search-engine format (third-party guides). Likely runs the query at once. The server redirects to /search/new?q= (seen 2026-11-15; whether the message arrives was not checked). Covered by the iOS universal-link paths.",
       },
@@ -86,6 +86,7 @@ export const perplexity: ProviderAdapter = {
         evidence: "unverified",
         note: "Alternative path from one guide. Not covered by the iOS universal-link paths, so it likely stays in the browser.",
       },
+      copyAndOpen(perplexity),
     ];
   },
 };
