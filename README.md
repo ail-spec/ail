@@ -80,10 +80,10 @@ Partly, and only through undocumented behavior. Device tests on 2026-11-11:
 | ChatGPT | 🟢 / 🟢 | 🟢 observed | Only when signed out |
 | Claude | 🟢 / 🟢 | 🟢 observed | Never observed |
 | Gemini | 🟢 / ⚪ | Copy and paste | — |
-| Perplexity | ⚪ browser / ⚪ | 🟢 observed (iOS, desktop) | Always, at once |
-| Mistral | ⚪ browser / ⚪ | 🟢 observed (iOS, desktop) | Always, at once |
+| Perplexity | ⚪ browser / ⚪ browser | 🟢 observed | Almost always, at once |
+| Mistral | ⚪ browser / ⚪ browser | 🟢 observed | Almost always, at once |
 
-Perplexity and Mistral were device-tested on 2026-11-16 (iPhone and desktop; Android not yet). **No provider documents a prefill URL.** Full table, launch URLs and sources: [`compatibility/STATUS.md`](compatibility/STATUS.md). Results come from one device per platform, so [more device reports](compatibility/PROTOCOL.md) are very welcome.
+Perplexity and Mistral were device-tested on 2026-11-16 and 2026-11-17 (iPhone, Android and desktop). **No provider documents a prefill URL.** Full table, launch URLs and sources: [`compatibility/STATUS.md`](compatibility/STATUS.md). Results come from one device per platform, so [more device reports](compatibility/PROTOCOL.md) are very welcome.
 
 ## Principles
 

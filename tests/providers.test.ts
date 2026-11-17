@@ -34,15 +34,15 @@ describe("provider adapters", () => {
     expect(v.url).toBe("https://gemini.google.com/app");
   });
 
-  it("defaults Perplexity and Mistral to ?q=, observed on iPhone and desktop only", () => {
+  it("defaults Perplexity and Mistral to ?q=, observed on iPhone, Android and desktop", () => {
     for (const [id, url] of [["perplexity", "https://www.perplexity.ai/search?q=hello"], ["mistral", "https://chat.mistral.ai/chat?q=hello"]]) {
       const p = getProvider(id)!;
       const v = defaultVariant(p, "hello");
       expect(v.strategy).toBe("url-prefill");
       expect(v.url).toBe(url);
-      // Device-tested on iPhone and desktop only; no provider documents it.
+      // Device-tested on iPhone, Android and desktop; no provider documents it.
       expect(v.evidence).toBe("observed");
-      expect(p.promptPrefill).toEqual({ desktop: "observed", ios: "observed", android: "unverified" });
+      expect(p.promptPrefill).toEqual({ desktop: "observed", ios: "observed", android: "observed" });
     }
   });
 

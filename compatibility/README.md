@@ -6,22 +6,23 @@ How ChatGPT, Claude, Gemini, Perplexity and Mistral Vibe (Le Chat) behave when a
 - **[results.csv](results.csv)**: the raw device-test log.
 - **[PROTOCOL.md](PROTOCOL.md)**: how to test your own device and contribute a result.
 
-## Perplexity and Mistral: device results (2026-11-16)
+## Perplexity and Mistral: device results (2026-11-16, Android 2026-11-17)
 
-One iPhone 13 (Chrome) and one MacBook Air (Chrome), one tester. **Android was not tested**, so Android stays *unverified*. Neither provider documents a prefill URL, so everything here is *observed* at most.
+One iPhone 13 (Chrome), one MacBook Air (Chrome) and one Android phone (Chrome, model not recorded), one tester. Neither provider documents a prefill URL, so everything here is *observed* at most.
 
 | Flow | Perplexity `/search?q=` | Mistral `/chat?q=` |
 |---|---|---|
 | Opens, iPhone | Browser, even from a camera scan | Browser, even from a camera scan (`/chat/?q=` too) |
+| Opens, Android | Browser, even from a camera scan (app not installed) | Browser, even from a camera scan (`/chat/?q=` too) |
 | Opens, desktop | Web | Web |
-| Message arrives | ✅ exact, accents, €, emoji, 東京, line breaks | ✅ exact |
-| **Sent by itself** | **Yes, at once**, then asks for an account before answering (iPhone) | **Yes, at once**, signed in or out |
-| Signed out | Asks to sign in; after sign-in the message is gone (iPhone, desktop) | Desktop: kept through sign-in and sent. iPhone: message didn't appear (result contradictory, retest) |
+| Message arrives | ✅ exact, accents, €, emoji, 東京, line breaks (all three devices) | ✅ exact (all three devices) |
+| **Sent by itself** | **Yes, at once**; on the iPhone it then asks for an account before answering | **Yes, at once**, except signed out on Android (see below) |
+| Signed out | iPhone, desktop: asks to sign in; after sign-in the message is gone. Android: answered without asking | Desktop and Android: asks to sign in, message kept and sent after. iPhone: message didn't appear (result contradictory, retest) |
 
 What this means for consumers:
 
 1. **Both send the message with no review.** A page that shows the message before launch, like the one ChatGPT needs for signed-out visitors, is the only review a person gets.
-2. **No app hand-off seen on iPhone**, although both apps' universal-link files cover these paths. Whether the apps were installed wasn't recorded: retest with the apps installed.
+2. **No app hand-off seen** on iPhone or Android, although both apps' universal-link files cover these paths. App installation was recorded only once (Android, Perplexity: not installed). The tester noted that the apps open when installed, but no test logged it: retest with the apps installed.
 3. `perplexity.ai/?q=` behaves like `/search?q=`, so it stays an experimental alternative.
 
 Desk research before the tests (2026-11-15): formats from third-party sources only (browser search-engine guides for Perplexity, the R package `searcher` for Mistral); Mistral's help center says Le Chat became Vibe on 2026-08-12 at the same address.

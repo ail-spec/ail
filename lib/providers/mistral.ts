@@ -9,26 +9,30 @@ export const mistral: ProviderAdapter = {
   platforms: ["ios", "android", "desktop"],
   urlSchemes: { web: "https://chat.mistral.ai/chat?q={prompt}" },
   // Device tests 2026-11-16 (compatibility/results.csv): iPhone 13 (Chrome) and a MacBook Air
-  // (Chrome). Android was not tested. Not documented by Mistral, so "observed" at most.
+  // (Chrome), plus an Android phone (Chrome) on 2026-11-17. Not documented by Mistral, so "observed"
+  // at most.
   nativeAppLaunch: {
     // Every iPhone test opened the browser, /chat/?q= (covered by the app's universal links)
     // included. Whether the app was installed wasn't recorded.
     ios: "unverified",
-    android: "unverified", // not tested
+    // Android: every test opened the browser (app not installed where recorded). The tester noted
+    // that it opens in the app when installed, but no test logged that.
+    android: "unverified",
     desktop: "unverified", // only the web app was tested
   },
   promptPrefill: {
     desktop: "observed", // exact, accents, €, emoji and line breaks included
     ios: "observed",
-    android: "unverified", // not tested
+    android: "observed",
   },
-  // Sent straight away in every test, signed in and signed out.
+  // Sent straight away in every test but one: signed out on Android it asked to sign in first and
+  // kept the message.
   autoSubmit: "observed",
-  autoSubmitNote: "Sends the message as soon as it opens, signed in or out (device tests 2026-11-16).",
+  autoSubmitNote: "Sends the message as soon as it opens (device tests 2026-11-16 and 2026-11-17).",
   maxPromptLength: null,
   safeUrlLength: 2000,
   requiresLogin:
-    "Signed out it asks to sign in. Desktop kept the message through sign-in; on the iPhone the message didn't appear (2026-11-16).",
+    "Signed out it asks to sign in. Desktop (2026-11-16) and Android (2026-11-17) kept the message through sign-in; on the iPhone the message didn't appear (2026-11-16, to retest).",
   requiresInstall: "No (web). App optional.",
   fallback: "Copy prompt, then open chat.mistral.ai.",
   docs: [
@@ -51,7 +55,7 @@ export const mistral: ProviderAdapter = {
       note: "Builds chat.mistral.ai/chat?q= links. Says nothing about auto-send or sign-in.",
     },
   ],
-  lastVerified: "2026-11-16",
+  lastVerified: "2026-11-17",
   verificationMethod: "device-tested",
   variants(prompt) {
     const q = encodeURIComponent(prompt);
@@ -64,7 +68,7 @@ export const mistral: ProviderAdapter = {
         strategy: "url-prefill",
         experimental: false,
         evidence: "observed",
-        note: "Undocumented ?q= parameter. Device-tested: the exact message arrives and is sent at once; it opened in the browser on iPhone, as did /chat/?q=.",
+        note: "Undocumented ?q= parameter. Device-tested: the exact message arrives and is sent at once; it opened in the browser on iPhone and Android, as did /chat/?q=.",
       },
       copyAndOpen(mistral),
     ];

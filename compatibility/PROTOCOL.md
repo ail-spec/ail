@@ -40,7 +40,7 @@ Always report "the assistant opened" and "the message arrived" separately. They 
 
 ## New assistants
 
-Perplexity and Mistral were tested on an iPhone and a desktop browser (2026-11-16). Most wanted now: **any Android result**, and an iPhone run with the Perplexity and Mistral apps installed and signed in (both opened in the browser, and app installation wasn't recorded).
+Perplexity and Mistral were tested on an iPhone, a desktop browser (2026-11-16) and an Android phone (2026-11-17). Most wanted now: a run with the Perplexity and Mistral apps **installed and signed in**, on iPhone or Android (every test so far opened the browser), and Mistral signed out on an iPhone (that result was contradictory).
 
 ## Minimum useful pass
 

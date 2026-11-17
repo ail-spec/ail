@@ -7,27 +7,30 @@ export const perplexity: ProviderAdapter = {
   platforms: ["ios", "android", "desktop"],
   urlSchemes: { web: "https://www.perplexity.ai/search?q={prompt}" },
   // Device tests 2026-11-16 (compatibility/results.csv): iPhone 13 (Chrome) and a MacBook Air
-  // (Chrome). Android was not tested. Not documented by Perplexity, so "observed" at most.
+  // (Chrome), plus an Android phone (Chrome) on 2026-11-17. Not documented by Perplexity, so "observed"
+  // at most.
   nativeAppLaunch: {
     // Every iPhone test opened the browser, camera scans of /search?q= included, although the iOS
     // app's universal links cover /search. Whether the app was installed wasn't recorded.
     ios: "unverified",
-    android: "unverified", // not tested
+    // Android: every test opened the browser (app not installed where recorded). The tester noted
+    // that it opens in the app when installed, but no test logged that.
+    android: "unverified",
     desktop: "unverified", // only the web app was tested
   },
   promptPrefill: {
     desktop: "observed", // exact, accents, €, emoji and line breaks included
     ios: "observed",
-    android: "unverified", // not tested
+    android: "observed",
   },
-  // Sent straight away in every signed-in test and on the iPhone signed out; it then asks for an
-  // account before answering. The landing-page preview is the only review a person gets.
+  // Sent straight away in every test but one (desktop signed out). On the iPhone it then asks for an
+  // account before answering; on Android it answered without one. The landing-page preview is the only review a person gets.
   autoSubmit: "observed",
-  autoSubmitNote: "Runs the question as soon as it opens (device tests 2026-11-16).",
+  autoSubmitNote: "Runs the question as soon as it opens (device tests 2026-11-16 and 2026-11-17).",
   maxPromptLength: null,
   safeUrlLength: 2000,
   requiresLogin:
-    "Yes, to get an answer: signed out, the iPhone sent the question and then asked to sign in; after sign-in the message was gone, on the iPhone and on desktop (2026-11-16).",
+    "Varies: signed out, the iPhone sent the question and then asked to sign in, and after sign-in the message was gone (iPhone and desktop, 2026-11-16). Android answered signed out without asking (2026-11-17).",
   requiresInstall: "No (web). App optional.",
   fallback: "Copy prompt, then open perplexity.ai.",
   docs: [
@@ -56,7 +59,7 @@ export const perplexity: ProviderAdapter = {
       note: "Claims /search/?q= pre-loads the query and runs it on page load. Unverified.",
     },
   ],
-  lastVerified: "2026-11-16",
+  lastVerified: "2026-11-17",
   verificationMethod: "device-tested",
   variants(prompt) {
     const q = encodeURIComponent(prompt);
@@ -70,7 +73,7 @@ export const perplexity: ProviderAdapter = {
         strategy: "url-prefill",
         experimental: false,
         evidence: "observed",
-        note: "Undocumented ?q= parameter (browser search-engine format). Device-tested: the exact message arrives and is sent at once; it opened in the browser, not the app, on iPhone.",
+        note: "Undocumented ?q= parameter (browser search-engine format). Device-tested: the exact message arrives and is sent at once; it opened in the browser, not the app, on iPhone and Android.",
       },
       {
         id: "perplexity-web-root-q",

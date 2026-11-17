@@ -242,12 +242,12 @@ android,perplexity,perplexity-open,opened-from-WhatsApp,,,,,,,,,,,
 android,perplexity,perplexity-web-search-q,app-installed+logged-in,,,,,,,,,,,
 android,perplexity,perplexity-web-search-q,app-installed+logged-out,,,,,,,,,,,
 android,perplexity,perplexity-web-search-q,app-not-installed+logged-in(web),,,,,,,,,,,
-android,perplexity,perplexity-web-search-q,app-not-installed+logged-out(web),,,,,,,,,,,
-android,perplexity,perplexity-web-search-q,short-prompt,,,,,,,,,,,
+android,perplexity,perplexity-web-search-q,app-not-installed+logged-out(web),n,y,y,,no sign-in asked,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,r2-android-04: private tab. Sent at once; no sign-in asked.
+android,perplexity,perplexity-web-search-q,short-prompt,n,y,y,,,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,r2-android-01: browser; sent at once. Tester note on this test: 'If the app is installed open in app (Vibe)'.
 android,perplexity,perplexity-web-search-q,long-prompt(~1800 chars),,,,,,,,,,,
-android,perplexity,perplexity-web-search-q,special-chars+non-English,,,,,,,,,,,
+android,perplexity,perplexity-web-search-q,special-chars+non-English,n,y,y,,,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,"r2-android-03: accents, €, emoji, 東京 and line breaks exact; sent at once."
 android,perplexity,perplexity-web-search-q,opened-from-QR-camera,,,,,,,,,,,
-android,perplexity,perplexity-web-search-q,direct-QR-camera(no landing page),,,,,,,,,,,
+android,perplexity,perplexity-web-search-q,direct-QR-camera(no landing page),n,y,y,,,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,r2-android-02: app not installed; camera scan opened the browser; sent at once and answered without sign-in. Tester note: with the app installed it opens in the app (not logged as its own test).
 android,perplexity,perplexity-web-search-q,opened-from-WhatsApp,,,,,,,,,,,
 android,perplexity,perplexity-web-root-q,app-installed+logged-in,,,,,,,,,,,
 android,perplexity,perplexity-web-root-q,app-installed+logged-out,,,,,,,,,,,
@@ -257,7 +257,7 @@ android,perplexity,perplexity-web-root-q,short-prompt,,,,,,,,,,,
 android,perplexity,perplexity-web-root-q,long-prompt(~1800 chars),,,,,,,,,,,
 android,perplexity,perplexity-web-root-q,special-chars+non-English,,,,,,,,,,,
 android,perplexity,perplexity-web-root-q,opened-from-QR-camera,,,,,,,,,,,
-android,perplexity,perplexity-web-root-q,direct-QR-camera(no landing page),,,,,,,,,,,
+android,perplexity,perplexity-web-root-q,direct-QR-camera(no landing page),n,y,y,,sign-in asked,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,r2-android-05: same as /search?q=; asked to sign in.
 android,perplexity,perplexity-web-root-q,opened-from-WhatsApp,,,,,,,,,,,
 android,mistral,mistral-open,app-installed+logged-in,,,,,,,,,,,
 android,mistral,mistral-open,app-installed+logged-out,,,,,,,,,,,
@@ -272,12 +272,12 @@ android,mistral,mistral-open,opened-from-WhatsApp,,,,,,,,,,,
 android,mistral,mistral-web-chat-q,app-installed+logged-in,,,,,,,,,,,
 android,mistral,mistral-web-chat-q,app-installed+logged-out,,,,,,,,,,,
 android,mistral,mistral-web-chat-q,app-not-installed+logged-in(web),,,,,,,,,,,
-android,mistral,mistral-web-chat-q,app-not-installed+logged-out(web),,,,,,,,,,,
-android,mistral,mistral-web-chat-q,short-prompt,,,,,,,,,,,
+android,mistral,mistral-web-chat-q,app-not-installed+logged-out(web),n,y,n,,sign-in asked; message kept,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,"r2-android-09: private tab. Not sent at once: asked to sign in first, message kept."
+android,mistral,mistral-web-chat-q,short-prompt,n,y,y,,,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,r2-android-06: browser; sent at once.
 android,mistral,mistral-web-chat-q,long-prompt(~1800 chars),,,,,,,,,,,
-android,mistral,mistral-web-chat-q,special-chars+non-English,,,,,,,,,,,
+android,mistral,mistral-web-chat-q,special-chars+non-English,n,y,y,,,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,"r2-android-08: accents, €, emoji, 東京 and line breaks exact; sent at once."
 android,mistral,mistral-web-chat-q,opened-from-QR-camera,,,,,,,,,,,
-android,mistral,mistral-web-chat-q,direct-QR-camera(no landing page),,,,,,,,,,,
+android,mistral,mistral-web-chat-q,direct-QR-camera(no landing page),n,y,y,,,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,"r2-android-07: camera scan opened the browser; sent at once. r2-android-10: chat.mistral.ai/chat/?q= (with slash) also opened the browser, message exact, sent at once."
 android,mistral,mistral-web-chat-q,opened-from-WhatsApp,,,,,,,,,,,
 macos,chatgpt,chatgpt-web-q,app-not-installed+logged-in(web),n,y,n,1,,observed,device test 2026-11-11,2026-11-11,MacBook Air; Chrome 156.0.8078.79,maintainer,test computer-01
 macos,chatgpt,chatgpt-web-q,app-not-installed+logged-out(web),n,y,y,0,,observed,device test 2026-11-11,2026-11-11,MacBook Air; Chrome 156.0.8078.79,maintainer,"Reported in chat: Chrome incognito, signed out. Sent immediately; 0 taps after the landing-page button. test computer-x1"
