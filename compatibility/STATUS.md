@@ -21,8 +21,8 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 | ChatGPT | 🟢 observed | 🟢 observed | ⚪ unverified |
 | Claude | 🟢 observed | 🟢 observed | ⚪ unverified |
 | Gemini | 🟢 observed | ⚪ unverified | ❌ unsupported |
-| Perplexity | ⚪ unverified | ⚪ unverified | ⚪ unverified |
-| Mistral | ⚪ unverified | ⚪ unverified | ⚪ unverified |
+| Perplexity | 🟢 observed | 🟢 observed | ⚪ unverified |
+| Mistral | 🟢 observed | 🟢 observed | ⚪ unverified |
 
 ## Prompt arrives in the chat box
 
@@ -57,10 +57,10 @@ What works today when a link tries to open an assistant with a prompt. "Opened" 
 | Gemini | `gemini-open` | `https://gemini.google.com/app` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
 | Gemini | `gemini-web-q` | `https://gemini.google.com/app?q={prompt}` | 🟡 conflicting | no (experimental) | Claimed by one generator site; most reports say it needs an extension. |
 | Gemini | `gemini-guided-learning-query` | `https://gemini.google.com/guided-learning?query={prompt}` | ⚪ unverified | no (experimental) | Reported by an education blog (Dec 2025). Changes Gemini's mode. |
-| Perplexity | `perplexity-web-search-q` | `https://www.perplexity.ai/search?q={prompt}` | 🟢 observed | yes | Undocumented ?q= parameter (browser search-engine format). Device-tested: the exact message arrives and is sent at once; it opened in the browser, not the app, on iPhone and Android. |
+| Perplexity | `perplexity-web-search-q` | `https://www.perplexity.ai/search?q={prompt}` | 🟢 observed | yes | Undocumented ?q= parameter (browser search-engine format). Device-tested: the exact message arrives and is sent at once; it opens the app when installed (iPhone, Android), the browser otherwise. |
 | Perplexity | `perplexity-web-root-q` | `https://www.perplexity.ai/?q={prompt}` | 🟢 observed | no (experimental) | Alternative path from one guide. Device-tested: behaves like /search?q= (message arrives, sent at once, browser). |
 | Perplexity | `perplexity-open` | `https://www.perplexity.ai/` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
-| Mistral | `mistral-web-chat-q` | `https://chat.mistral.ai/chat?q={prompt}` | 🟢 observed | yes | Undocumented ?q= parameter. Device-tested: the exact message arrives and is sent at once; it opened in the browser on iPhone and Android, as did /chat/?q=. |
+| Mistral | `mistral-web-chat-q` | `https://chat.mistral.ai/chat?q={prompt}` | 🟢 observed | yes | Undocumented ?q= parameter. Device-tested: the exact message arrives and is sent at once; it opens the app when installed (iPhone, Android), the browser otherwise. |
 | Mistral | `mistral-open` | `https://chat.mistral.ai/` | ✅ documented | yes | Opens the provider's normal entry point. No prompt is transferred; the person pastes it. |
 
 ## Per assistant

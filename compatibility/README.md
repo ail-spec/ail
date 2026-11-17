@@ -12,8 +12,7 @@ One iPhone 13 (Chrome), one MacBook Air (Chrome) and one Android phone (Chrome, 
 
 | Flow | Perplexity `/search?q=` | Mistral `/chat?q=` |
 |---|---|---|
-| Opens, iPhone | Browser, even from a camera scan | Browser, even from a camera scan (`/chat/?q=` too) |
-| Opens, Android | Browser, even from a camera scan (app not installed) | Browser, even from a camera scan (`/chat/?q=` too) |
+| Opens, iPhone and Android | App when installed, with the message (camera scan and landing page); browser otherwise | Same |
 | Opens, desktop | Web | Web |
 | Message arrives | ✅ exact, accents, €, emoji, 東京, line breaks (all three devices) | ✅ exact (all three devices) |
 | **Sent by itself** | **Yes, at once**; on the iPhone it then asks for an account before answering | **Yes, at once**, except signed out on Android (see below) |
@@ -22,7 +21,7 @@ One iPhone 13 (Chrome), one MacBook Air (Chrome) and one Android phone (Chrome, 
 What this means for consumers:
 
 1. **Both send the message with no review.** A page that shows the message before launch, like the one ChatGPT needs for signed-out visitors, is the only review a person gets.
-2. **No app hand-off seen** on iPhone or Android, although both apps' universal-link files cover these paths. App installation was recorded only once (Android, Perplexity: not installed). The tester noted that the apps open when installed, but no test logged it: retest with the apps installed.
+2. **The apps open when installed**, on iPhone and Android, with the message (tester report, 2026-11-17; not logged per test, and sign-in state and in-app auto-send weren't recorded). The earlier browser results were without the apps.
 3. `perplexity.ai/?q=` behaves like `/search?q=`, so it stays an experimental alternative.
 
 Desk research before the tests (2026-11-15): formats from third-party sources only (browser search-engine guides for Perplexity, the R package `searcher` for Mistral); Mistral's help center says Le Chat became Vibe on 2026-08-12 at the same address.

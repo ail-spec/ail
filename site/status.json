@@ -223,8 +223,8 @@
       "verificationMethod": "device-tested",
       "defaultStrategy": "url-prefill",
       "nativeAppLaunch": {
-        "ios": "unverified",
-        "android": "unverified",
+        "ios": "observed",
+        "android": "observed",
         "desktop": "unverified"
       },
       "promptPrefill": {
@@ -244,7 +244,7 @@
           "strategy": "url-prefill",
           "experimental": false,
           "evidence": "observed",
-          "note": "Undocumented ?q= parameter (browser search-engine format). Device-tested: the exact message arrives and is sent at once; it opened in the browser, not the app, on iPhone and Android."
+          "note": "Undocumented ?q= parameter (browser search-engine format). Device-tested: the exact message arrives and is sent at once; it opens the app when installed (iPhone, Android), the browser otherwise."
         },
         {
           "id": "perplexity-web-root-q",
@@ -298,8 +298,8 @@
       "verificationMethod": "device-tested",
       "defaultStrategy": "url-prefill",
       "nativeAppLaunch": {
-        "ios": "unverified",
-        "android": "unverified",
+        "ios": "observed",
+        "android": "observed",
         "desktop": "unverified"
       },
       "promptPrefill": {
@@ -319,7 +319,7 @@
           "strategy": "url-prefill",
           "experimental": false,
           "evidence": "observed",
-          "note": "Undocumented ?q= parameter. Device-tested: the exact message arrives and is sent at once; it opened in the browser on iPhone and Android, as did /chat/?q=."
+          "note": "Undocumented ?q= parameter. Device-tested: the exact message arrives and is sent at once; it opens the app when installed (iPhone, Android), the browser otherwise."
         },
         {
           "id": "mistral-open",

@@ -10,12 +10,10 @@ export const perplexity: ProviderAdapter = {
   // (Chrome), plus an Android phone (Chrome) on 2026-11-17. Not documented by Perplexity, so "observed"
   // at most.
   nativeAppLaunch: {
-    // Every iPhone test opened the browser, camera scans of /search?q= included, although the iOS
-    // app's universal links cover /search. Whether the app was installed wasn't recorded.
-    ios: "unverified",
-    // Android: every test opened the browser (app not installed where recorded). The tester noted
-    // that it opens in the app when installed, but no test logged that.
-    android: "unverified",
+    // With the app installed (2026-11-17, iPhone and Android), the app opened with the exact
+    // message, from a camera scan and from a landing page. Without it, the browser opens.
+    ios: "observed",
+    android: "observed",
     desktop: "unverified", // only the web app was tested
   },
   promptPrefill: {
@@ -73,7 +71,7 @@ export const perplexity: ProviderAdapter = {
         strategy: "url-prefill",
         experimental: false,
         evidence: "observed",
-        note: "Undocumented ?q= parameter (browser search-engine format). Device-tested: the exact message arrives and is sent at once; it opened in the browser, not the app, on iPhone and Android.",
+        note: "Undocumented ?q= parameter (browser search-engine format). Device-tested: the exact message arrives and is sent at once; it opens the app when installed (iPhone, Android), the browser otherwise.",
       },
       {
         id: "perplexity-web-root-q",

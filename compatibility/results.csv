@@ -99,7 +99,7 @@ ios,perplexity,perplexity-open,special-chars+non-English,,,,,,,,,,,
 ios,perplexity,perplexity-open,opened-from-QR-camera,,,,,,,,,,,
 ios,perplexity,perplexity-open,direct-QR-camera(no landing page),,,,,,,,,,,
 ios,perplexity,perplexity-open,opened-from-WhatsApp,,,,,,,,,,,
-ios,perplexity,perplexity-web-search-q,app-installed+logged-in,,,,,,,,,,,
+ios,perplexity,perplexity-web-search-q,app-installed+logged-in,y,y,,,,observed,device test 2026-11-17 (tester report),2026-11-17,iPhone 13; Perplexity and Mistral apps installed,maintainer,"Tester report in chat 2026-11-17 (not logged on the test page): the app opened with the exact message, from a camera scan and from the scan page. Sign-in state and whether the app sent it at once not recorded."
 ios,perplexity,perplexity-web-search-q,app-installed+logged-out,,,,,,,,,,,
 ios,perplexity,perplexity-web-search-q,app-not-installed+logged-in(web),,,,,,,,,,,
 ios,perplexity,perplexity-web-search-q,app-not-installed+logged-out(web),n,y,y,,sign-in asked; message lost after sign-in,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,"r2-iphone-04: private tab. Sent at once, asked to sign in; afterwards Perplexity asked to repeat the question."
@@ -129,7 +129,7 @@ ios,mistral,mistral-open,special-chars+non-English,,,,,,,,,,,
 ios,mistral,mistral-open,opened-from-QR-camera,,,,,,,,,,,
 ios,mistral,mistral-open,direct-QR-camera(no landing page),,,,,,,,,,,
 ios,mistral,mistral-open,opened-from-WhatsApp,,,,,,,,,,,
-ios,mistral,mistral-web-chat-q,app-installed+logged-in,,,,,,,,,,,
+ios,mistral,mistral-web-chat-q,app-installed+logged-in,y,y,,,,observed,device test 2026-11-17 (tester report),2026-11-17,iPhone 13; Perplexity and Mistral apps installed,maintainer,"Tester report in chat 2026-11-17 (not logged on the test page): the app opened with the exact message, from a camera scan and from the scan page. Sign-in state and whether the app sent it at once not recorded."
 ios,mistral,mistral-web-chat-q,app-installed+logged-out,,,,,,,,,,,
 ios,mistral,mistral-web-chat-q,app-not-installed+logged-in(web),,,,,,,,,,,
 ios,mistral,mistral-web-chat-q,app-not-installed+logged-out(web),n,n,y,,sign-in asked,observed,device test 2026-11-16,2026-11-16,iPhone 13; Chrome (from the round 1 device box); apps: latest; app install not recorded,maintainer,"r2-iphone-09: private tab. Recorded as 'asked, message kept' but message 'no' and sent 'yes': contradictory, retest."
@@ -239,7 +239,7 @@ android,perplexity,perplexity-open,special-chars+non-English,,,,,,,,,,,
 android,perplexity,perplexity-open,opened-from-QR-camera,,,,,,,,,,,
 android,perplexity,perplexity-open,direct-QR-camera(no landing page),,,,,,,,,,,
 android,perplexity,perplexity-open,opened-from-WhatsApp,,,,,,,,,,,
-android,perplexity,perplexity-web-search-q,app-installed+logged-in,,,,,,,,,,,
+android,perplexity,perplexity-web-search-q,app-installed+logged-in,y,y,,,,observed,device test 2026-11-17 (tester report),2026-11-17,Android phone (model not recorded); Perplexity and Mistral apps installed,maintainer,"Tester report in chat 2026-11-17 (not logged on the test page): the app opened with the exact message, from a camera scan and from the scan page. Sign-in state and whether the app sent it at once not recorded."
 android,perplexity,perplexity-web-search-q,app-installed+logged-out,,,,,,,,,,,
 android,perplexity,perplexity-web-search-q,app-not-installed+logged-in(web),,,,,,,,,,,
 android,perplexity,perplexity-web-search-q,app-not-installed+logged-out(web),n,y,y,,no sign-in asked,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,r2-android-04: private tab. Sent at once; no sign-in asked.
@@ -269,7 +269,7 @@ android,mistral,mistral-open,special-chars+non-English,,,,,,,,,,,
 android,mistral,mistral-open,opened-from-QR-camera,,,,,,,,,,,
 android,mistral,mistral-open,direct-QR-camera(no landing page),,,,,,,,,,,
 android,mistral,mistral-open,opened-from-WhatsApp,,,,,,,,,,,
-android,mistral,mistral-web-chat-q,app-installed+logged-in,,,,,,,,,,,
+android,mistral,mistral-web-chat-q,app-installed+logged-in,y,y,,,,observed,device test 2026-11-17 (tester report),2026-11-17,Android phone (model not recorded); Perplexity and Mistral apps installed,maintainer,"Tester report in chat 2026-11-17 (not logged on the test page): the app opened with the exact message, from a camera scan and from the scan page. Sign-in state and whether the app sent it at once not recorded."
 android,mistral,mistral-web-chat-q,app-installed+logged-out,,,,,,,,,,,
 android,mistral,mistral-web-chat-q,app-not-installed+logged-in(web),,,,,,,,,,,
 android,mistral,mistral-web-chat-q,app-not-installed+logged-out(web),n,y,n,,sign-in asked; message kept,observed,device test 2026-11-17,2026-11-17,Android phone (model not recorded); Chrome; app install recorded only for r2-android-02 (not installed),maintainer,"r2-android-09: private tab. Not sent at once: asked to sign in first, message kept."
