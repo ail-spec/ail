@@ -5,6 +5,8 @@
 Scan a QR code at a museum, tap an NFC tag on a product, click a link in an email: your own assistant (ChatGPT, Claude, Gemini…) opens with the right question ready. AIL describes that experience in a small JSON file, so any tool can create or read it.
 
 > Status: experimental, v0.1. Not a standard. Expect breaking changes before 1.0.
+>
+> Announcement and questions: [AIL v0.1 discussion](https://github.com/ail-spec/ail/discussions/3) · Compatibility today: [status page](https://ail-spec.github.io/ail)
 
 ```json
 {
